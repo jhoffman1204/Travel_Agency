@@ -2,7 +2,6 @@ CREATE TABLE Transportation (
 	transportation_ID 	INTEGER,
 	transportation_type	VARCHAR(255),
 	PRIMARY KEY (transportation_ID),
-	CHECK transportation_ID > 0
 );
 
 CREATE TABLE Groups(	
@@ -12,7 +11,6 @@ CREATE TABLE Groups(
 	destination_location VARCHAR(255),
 	group_size VARCHAR(255),
 	PRIMARY KEY (groupID) ,
-	CHECK Id > 0 
 );
 
 CREATE TABLE Group_Passengers (
@@ -25,7 +23,6 @@ CREATE TABLE Group_Passengers (
 	FOREIGN KEY(groupID) REFERNCES Groups(ID),
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-	CHECK ( groupID>0 AND Id >0 AND age>0 )
 );
 
 CREATE TABLE Payment (
@@ -33,7 +30,6 @@ CREATE TABLE Payment (
 	card_expiration_date DATE, 
 	payment_type VARCHAR(255),
 	PRIMARY KEY (card_number),
-	CHECK(card_number>0)
 );
 	
 CREATE TABLE Location (
@@ -41,7 +37,6 @@ CREATE TABLE Location (
 	city_name VARCHAR(255), 
 	payment_type VARCHAR(255),
 	PRIMARY KEY (location_ID),
-	CHECK (location_ID>0)
 );
 	
 CREATE TABLE Accomodation (
@@ -49,7 +44,6 @@ CREATE TABLE Accomodation (
 	discount INTEGER, 
 	rate_per_night INTEGER,
 	PRIMARY KEY (address),
-	CHECK (discount>0 AND rate_per_night >0
 );
 	
 CREATE TABLE Accomodation_facilities (
@@ -72,7 +66,6 @@ CREATE TABLE Cruise (
 	FOREIGN KEY (cruise_number) REFERENCES Transportation(transportation_ID) ,
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-	CHECK(cruise_number >0 AND depart_date <= arrival_date)
 ); 
 	
 CREATE TABLE Cruise_destinations (
@@ -93,7 +86,6 @@ CREATE TABLE Car_rental (
 	FOREIGN KEY (confirmation ID) REFERENCES Transportation (transportation_ID),
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-	CHECK(confirmation_ID>0)
 );
 CREATE TABLE Flight (
 	flight_number INTEGER,
@@ -107,7 +99,6 @@ CREATE TABLE Flight (
 	FOREIGN KEY (flight_number) REFERENCES Transportation(transportation_ID),
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-	CHECK(flight_number >0 AND fare>0 AND depart_date <= arrival_date)
 ) ;
 	
 CREATE TABLE Reviews (
@@ -119,8 +110,6 @@ CREATE TABLE Reviews (
 	FOREIGN KEY(passenger_ID) REFERENCES Group_Passengers(Id),
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-	CHECK( rating BETWEEN 1 AND 5),
-	CHECK( passenger_ID >0 AND groupID >0)
 );
 		
 CREATE TABLE Group_Transportation (
@@ -135,7 +124,6 @@ CREATE TABLE Group_Transportation (
 	FOREGIN KEY(groupID) REFERENCES Groups(ID),
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-	CHECK (transportation_ID>0 AND mode_of_transport>0)
 );
 	
 CREATE TABLE Group_Payment (
@@ -164,7 +152,6 @@ CREATE TABLE Group_Accomodation (
 	FOREIGN KEY (address) REFERENCES Accommodation(address),
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-	CHECK (groupID >0 AND cost>0 )
 );
 	
 CREATE TABLE Transports_to (
