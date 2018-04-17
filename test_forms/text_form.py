@@ -13,3 +13,11 @@ class LoginForm(FlaskForm):
     password = StringField('Password')
     email = StringField('Email')
     submit = SubmitField('Submit')
+    
+class SignupForm(FlaskForm):
+    username = StringField('Name')
+    password = StringField('Password')
+    email = StringField('Email')
+    submit = SubmitField('Submit')
+    
+    
