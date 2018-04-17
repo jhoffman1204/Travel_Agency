@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect
-from text_form import SubmissionForm, LoginForm
+from text_form import SubmissionForm, LoginForm, SignupForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'somesecretkey'
@@ -10,6 +10,16 @@ def homepage():
     
 
 @app.route('/', methods=['GET', 'POST'])
+def signup():
+    form = SignupForm()
+    if form.validate_on_submit():
+#        username = form.username.data
+#        password = form.password.data
+#        email = form.email.data
+        return homepage()
+    return render_template('signup.html', title='Signup', form=form)    
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():

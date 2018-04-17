@@ -1,7 +1,11 @@
 CREATE TABLE Transportation (
 	transportation_ID 	INTEGER,
 	transportation_type	VARCHAR(255),
+<<<<<<< HEAD
 	PRIMARY KEY (transportation_ID)
+=======
+	PRIMARY KEY (transportation_ID),
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 );
 CREATE TABLE Groups(
     groupID INTEGER,
@@ -9,7 +13,11 @@ CREATE TABLE Groups(
 	source_location VARCHAR(255), 
 	destination_location VARCHAR(255),
 	group_size VARCHAR(255),
+<<<<<<< HEAD
 	PRIMARY KEY (groupID)
+=======
+	PRIMARY KEY (groupID) ,
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 );
 CREATE TABLE Group_Passengers (
 	Id INTEGER,
@@ -26,20 +34,38 @@ CREATE TABLE Payment (
 	card_number INTEGER,
 	card_expiration_date DATE, 
 	payment_type VARCHAR(255),
+<<<<<<< HEAD
 	PRIMARY KEY (card_number)
 );	
+=======
+	PRIMARY KEY (card_number),
+);
+	
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Location (
 	location_ID INTEGER,
 	city_name VARCHAR(255), 
 	payment_type VARCHAR(255),
+<<<<<<< HEAD
 	PRIMARY KEY (location_ID)
 );	
+=======
+	PRIMARY KEY (location_ID),
+);
+	
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Accomodation (
 	address VARCHAR(255),
 	discount INTEGER, 
 	rate_per_night INTEGER,
+<<<<<<< HEAD
 	PRIMARY KEY (address)
 );	
+=======
+	PRIMARY KEY (address),
+);
+	
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Accomodation_facilities (
 	address VARCHAR(255), 
 	facilities VARCHAR(255),
@@ -58,7 +84,12 @@ CREATE TABLE Cruise (
 	FOREIGN KEY (cruise_number) REFERENCES Transportation(transportation_ID)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
+<<<<<<< HEAD
 ); 	
+=======
+); 
+	
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Cruise_destinations (
 	cruise_number INTEGER,
 	destination VARCHAR (255), 
@@ -88,7 +119,12 @@ CREATE TABLE Flight (
 	FOREIGN KEY (flight_number) REFERENCES Transportation(transportation_ID)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
+<<<<<<< HEAD
 );	
+=======
+) ;
+	
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Reviews (
 	passenger_ID INTEGER,
 	groupID INTEGER, 
@@ -98,10 +134,15 @@ CREATE TABLE Reviews (
 	FOREIGN KEY(passenger_ID) REFERENCES Group_Passengers(Id)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
+<<<<<<< HEAD
     FOREIGN KEY(groupID) REFERENCES Groups(groupID)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
 );		
+=======
+);
+		
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Group_Transportation (
 	transportation_ID INTEGER,
 	mode_of_transport VARCHAR(255),
@@ -114,7 +155,12 @@ CREATE TABLE Group_Transportation (
 	FOREIGN KEY(groupID) REFERENCES Groups(groupID)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
+<<<<<<< HEAD
 );	
+=======
+);
+	
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Group_Payment (
 	card_number INTEGER,
 	groupID INTEGER,
@@ -139,7 +185,12 @@ CREATE TABLE Group_Accomodation (
 	FOREIGN KEY (address) REFERENCES Accommodation(address)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
+<<<<<<< HEAD
 );	
+=======
+);
+	
+>>>>>>> f013e1e6d9cce578e87bd77e2e44a2d5873207a6
 CREATE TABLE Transports_to (
 	location_ID INTEGER,
 	transportation_ID INTEGER,
