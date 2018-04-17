@@ -6,19 +6,17 @@ connection = pymysql.connect(   host = 'cse305group.cqjihdluaq5a.us-east-2.rds.a
                                 password='cse305group', 
                                 database='tagency')
 
-first_table = ""
+first_table = "Transportation"
 
 cursor = connection.cursor()
 print("Number of tables: " + str(cursor.execute("show tables")))
-row = cursor.fetchone()
-while row:
-    first_table = row[0]
-    print(row[0])
+row = cursor.fetchall()
+for x in row:
+    first_table = x[0]
+    print(x[0])
+    print ("Removing table " + str(first_table))
+    try:
+        cursor.execute("DROP TABLE `" + str(first_table) + "`")
+    except:
+        print("Skipping")
     row = cursor.fetchone()
-print ("Removing table " + str(first_table))
-cursor.execute("DROP TABLE `" + str(first_table) + "`")
-row = cursor.fetchone()
-while row:
-    print(row[0])
-    row = cursor.fetchone()
-    first_table = row
