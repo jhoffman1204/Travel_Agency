@@ -1,0 +1,17 @@
+<html>
+<body>
+    <h1>Login</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+        </p>
+        <p>
+            {{ form.text.label }}<br>
+            {{ form.text(cols="35", rows="20") }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>
