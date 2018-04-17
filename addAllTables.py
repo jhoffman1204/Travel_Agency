@@ -19,10 +19,10 @@ for x in row:
 sqlFile = open ('data.sql', 'r')
 sqlCommands = sqlFile.read()
 sqlCommands = sqlCommands.split(';')
-
 for command in sqlCommands:
     try:
         cursor.execute(command)
+        print("Added table: " + str(command.split()[2]))
     except pymysql.err.InternalError as e:
         code, msg = e.args
         if code == 1050:

@@ -10,13 +10,13 @@ first_table = "Transportation"
 
 cursor = connection.cursor()
 print("Number of tables: " + str(cursor.execute("show tables")))
-row = cursor.fetchall()
-for x in row:
-    first_table = x[0]
-    print(x[0])
-    print ("Removing table " + str(first_table))
-    try:
-        cursor.execute("DROP TABLE `" + str(first_table) + "`")
-    except:
-        print("Skipping")
-    row = cursor.fetchone()
+row = list(cursor.fetchall())
+while(len(row) > 0):
+    for x in row:
+        first_table = x[0]
+        print ("Removing table " + str(first_table))
+        try:
+            cursor.execute("DROP TABLE `" + str(first_table) + "`")
+            row.remove(x)
+        except:
+            pass
