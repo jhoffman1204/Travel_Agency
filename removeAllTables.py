@@ -1,3 +1,5 @@
+# This python file removes all tables in our database
+
 #!/usr/bin/python
 import pymysql.cursors
 

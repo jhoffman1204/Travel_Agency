@@ -1,3 +1,5 @@
+# This python file prints all tables in our database
+
 #!/usr/bin/python
 import pymysql.cursors
 

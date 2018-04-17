@@ -1,3 +1,5 @@
+# This python file adds all the tables from data.sql into our database
+
 #!/usr/bin/python
 import pymysql.cursors
 
