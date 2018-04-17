@@ -14,10 +14,9 @@ class LoginForm(FlaskForm):
     email = StringField('Email')
     submit = SubmitField('Submit')
     
-class SignupForm(FlaskForm):
-    username = StringField('Name')
-    password = StringField('Password')
+class UserSignupForm(FlaskForm):
     email = StringField('Email')
+    password = StringField('Password')
     submit = SubmitField('Submit')
     
     
