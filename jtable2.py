@@ -14,9 +14,21 @@ cursor = connection.cursor()
 # while row:
     # row = cursor.fetchone()
 # print ("Adding " + str(first_table))
+email = "test3@gmail.com"
+password = "testpassword2"
+cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "');")
+
+email = "test4@gmail.com"
+password = "test"
+cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "');")
+
 print(cursor.execute("SELECT * FROM Users"))
-row = cursor.fetchone()
+row = cursor.fetchall()
 while row:
     print(row)
     row = cursor.fetchone()
     first_table = row
+
+
+connection.commit()
+connection.close()

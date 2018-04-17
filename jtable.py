@@ -14,9 +14,12 @@ cursor = connection.cursor()
 # while row:
     # row = cursor.fetchone()
 # print ("Adding " + str(first_table))
-cursor.execute("CREATE TABLE `" + str(first_table) + "` (userId INT, email VARCHAR(255) , password VARCHAR(255) , PRIMARY KEY (userId));")
+cursor.execute("CREATE TABLE `" + str(first_table) + "` (userId INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(255) , password VARCHAR(255));")
 row = cursor.fetchone()
 while row:
     print(row[0])
     row = cursor.fetchone()
     first_table = row
+
+connection.commit()
+connection.close()

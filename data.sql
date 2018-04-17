@@ -176,3 +176,9 @@ CREATE TABLE Accomodation_Reviews (
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
 );
+CREATE TABLE Users (
+    userId INT AUTO_INCREMENT,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    PRIMARY KEY(userId)
+);
