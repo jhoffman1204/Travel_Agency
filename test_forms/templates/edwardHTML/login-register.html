@@ -13,12 +13,40 @@
 
     <link rel="stylesheet" type = text/css href= "{{ url_for('static',filename='css/login-register.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/login-register.js') }}"></script>
+    
+<!--
+    <script> 
+        function passwordNoMatch() {
+            var elem = document.getElementById('register-form-link');
+            if (typeof elem.onclick == "function") {
+                elem.onclick.apply(elem);
+            }
+            document.getElementById("error").innerHTML = "Passwords do not match";
+        }
+
+        function usernameTaken() {
+            document.getElementById("error").innerHTML = "Username is already taken";
+        }
+    </script>
+-->
+
 
 </head>
     
 <!------ Include the above in your HEAD tag ---------->
 
 <body>
+	<div class="container" style="min-height:100% width:80%">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-warning alert-dismissible" role="alert">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
 <div class="container">
     	<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -37,17 +65,19 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
+								<form id="login-form" action="/" method="post" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
 									</div>
+<!--
 									<div class="form-group text-center">
 										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
 										<label for="remember"> Remember Me</label>
 									</div>
+-->
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
@@ -55,6 +85,7 @@
 											</div>
 										</div>
 									</div>
+<!--
 									<div class="form-group">
 										<div class="row">
 											<div class="col-lg-12">
@@ -64,13 +95,11 @@
 											</div>
 										</div>
 									</div>
+-->
 								</form>
-								<form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
+								<form id="register-form" action="/" method="post" role="form" style="display: none;">
 									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-									</div>
-									<div class="form-group">
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+										<input type="username" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
