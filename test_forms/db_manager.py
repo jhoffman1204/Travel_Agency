@@ -1,4 +1,3 @@
-
 #!/usr/bin/python
 import pymysql.cursors
 
@@ -68,6 +67,3 @@ class dbm:
         cursor.execute("INSERT INTO Group_Accomodation(address, groupID, cost, reservation_date) VALUES ('" + str(address) + "','"+ str(groupID) + "','"+ str(cost)+ "','"+ str(reservation_date) + "')")
         connection.commit()
 
-    def create_Transports_to():
-        cursor.execute("INSERT INTO Group_Accomodation(address, groupID, cost, reservation_date) VALUES ('" + str(address) + "','"+ str(groupID) + "','"+ str(cost)+ "','"+ str(reservation_date) + "')")
-        connection.commit()

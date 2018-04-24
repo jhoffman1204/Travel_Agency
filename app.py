@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from sqlalchemy import *
-from flask.ext.mysql import MySQL
+from flaskext.mysql import MySQL
 from werkzeug import generate_password_hash, check_password_hash
 from app import routes
 
