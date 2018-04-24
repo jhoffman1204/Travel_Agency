@@ -6,7 +6,6 @@ class SubmissionForm(FlaskForm):
     name = StringField('Name') # validators=[DataRequired()])
     text = TextAreaField('Your Story') # validators=[DataRequired()])
     submit = SubmitField('Submit')
-    
 
 class LoginForm(FlaskForm):
     username = StringField('Name')

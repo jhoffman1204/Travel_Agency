@@ -1,4 +1,3 @@
-
 #!/usr/bin/python
 import pymysql.cursors
 
@@ -12,6 +11,13 @@ class dbm:
     def print_test():
         print("testing")
     def add_new_user(email, password):
+        # Checks to make sure username is valid
+        x = cursor.execute("SELECT COUNT(*) FROM Users WHERE email = '" + email + "';")
+        if x > 0:
+            print("Username in use")
+            return False
+        
+        # If username is valid create a new user
         print("new user created with username " , email 
              , "and email " , password)
         cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "')")
@@ -22,3 +28,4 @@ class dbm:
             print(row)
             row = cursor.fetchone()
             first_table = row
+        return True

@@ -16,9 +16,10 @@ def signup():
     if form.validate_on_submit():
         password = form.password.data
         email = form.email.data
-        dbm.add_new_user(email, password)
-        return homepage()
-    return render_template('signup.html', title='Signup', form=form)    
+        x = dbm.add_new_user(email, password)
+        if x:
+            return homepage()
+    return render_template('edwardHTML/login-register.html', title='Signup', form=form)    
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
