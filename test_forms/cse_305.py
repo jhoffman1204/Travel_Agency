@@ -30,6 +30,21 @@ def login():
         return homepage()
     return render_template('login.html', title='Login', form=form)
 
+@app.route('/hotels', methods=['GET', 'POST'])
+def hotels():
+    return render_template('hotels.html', title='Hotels')
+
+@app.route('/car_rentals', methods=['GET', 'POST'])
+def car_rentals():
+    return render_template('car_rentals.html', title='Car Rentals')
+
+@app.route('/flights', methods=['GET', 'POST'])
+def flights():
+    return render_template('flights.html', title='Flights')
+
+@app.route('/cruises', methods=['GET', 'POST'])
+def cruises():
+    return render_template('cruises.html', title='Cruises')
 
 if __name__ == '__main__':
     app.run()
