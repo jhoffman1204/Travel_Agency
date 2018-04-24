@@ -4,7 +4,7 @@ CREATE TABLE Transportation (
 	PRIMARY KEY (transportation_ID)
 );
 CREATE TABLE Groups(
-    groupID INTEGER,
+    groupID INTEGER AUTO_INCREMENT,
 	purpose VARCHAR(255),
 	source_location VARCHAR(255), 
 	destination_location VARCHAR(255),
@@ -12,7 +12,7 @@ CREATE TABLE Groups(
 	PRIMARY KEY (groupID)
 );
 CREATE TABLE Group_Passengers (
-	Id INTEGER,
+	Id INTEGER AUTO_INCREMENT,
 	groupID INTEGER,
 	age INTEGER,
 	Name VARCHAR(255),
@@ -29,7 +29,7 @@ CREATE TABLE Payment (
 	PRIMARY KEY (card_number)
 );
 CREATE TABLE Location (
-	location_ID INTEGER,
+	location_ID INTEGER AUTO_INCREMENT,
 	city_name VARCHAR(255), 
 	payment_type VARCHAR(255),
 	PRIMARY KEY (location_ID)
@@ -49,7 +49,7 @@ CREATE TABLE Accomodation_facilities (
 		ON DELETE NO ACTION
 );
 CREATE TABLE Cruise (
-	cruise_number INTEGER,
+	cruise_number INTEGER AUTO_INCREMENT,
 	source_location VARCHAR(255), 
 	arrival_date DATE,
 	depart_date DATE,
@@ -60,7 +60,7 @@ CREATE TABLE Cruise (
 		ON DELETE NO ACTION
 ); 
 CREATE TABLE Cruise_destinations (
-	cruise_number INTEGER,
+	cruise_number INTEGER AUTO_INCREMENT,
 	destination VARCHAR (255), 
 	PRIMARY KEY (cruise_number, destination),
 	FOREIGN KEY(cruise_number) REFERENCES Cruise(cruise_number)
@@ -79,7 +79,7 @@ CREATE TABLE Car_rental (
 CREATE TABLE Flight (
 	flight_number INTEGER,
 	carrier VARCHAR(255), 
-	class VARCHAR(255),
+	classt VARCHAR(255),
 	depart_date DATE,
 	arrival_date DATE,
 	fare INTEGER,
@@ -90,20 +90,14 @@ CREATE TABLE Flight (
 		ON DELETE NO ACTION
 );	
 CREATE TABLE Reviews (
-	passenger_ID INTEGER,
-	groupID INTEGER, 
+	userId INTEGER, 
 	rating INTEGER,
+    review_target VARCHAR(255),
 	detailed_review VARCHAR(255),
-	PRIMARY KEY (passenger_ID),
-    FOREIGN KEY(groupID) REFERENCES Groups(groupID)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION,
-	FOREIGN KEY(passenger_ID) REFERENCES Group_Passengers(Id)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION
+	PRIMARY KEY (userId)
 );		
 CREATE TABLE Group_Transportation (
-	transportation_ID INTEGER,
+	transportation_ID INTEGER AUTO_INCREMENT,
 	mode_of_transport VARCHAR(255),
 	groupID INTEGER,
 	travel_date DATE,

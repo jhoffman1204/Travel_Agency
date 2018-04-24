@@ -1,0 +1,13 @@
+Next Steps:
+
+- have the first screen be a splash page with the login and signup button
+- have the login screen load the homepage with the username when they login
+- homepage will have options of what people can do
+- things users can do
+		- create groups
+		- write a review
+		- start a trip
+		- book an accomodation
+		- book a mode of transportation
+	- have all of these open up a seperate form that they fill out and and get sent to the db
+	
