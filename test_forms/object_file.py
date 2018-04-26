@@ -1,4 +1,4 @@
-class Flight:
+class Flight_Obj:
     def __init__(self, flight_number, carrier, classt, depart_date, arrival_date, fare, destination):
         self.flight_number = flight_number
         self.carrier = carrier
