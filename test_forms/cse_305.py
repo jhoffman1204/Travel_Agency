@@ -73,7 +73,7 @@ def car_rentals():
 
 @app.route('/flights', methods=['GET', 'POST'])
 def flights():
-	flights={'name':'flight1', 'name':'flight2'}
+	flights={'name':'flight1', 'name2':'flight2'}
 	return render_template('flights.html', title='Flights', flight=flights)
 
 @app.route('/cruises', methods=['GET', 'POST'])

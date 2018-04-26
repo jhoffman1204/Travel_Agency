@@ -70,6 +70,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     $( "#datepicker" ).datepicker();
   } );
   </script> 
+   <script>
+  $( function() {
+    $( "#datepicker2" ).datepicker();
+  } );
+  </script> 
   <script>
     var flight={{flight}}
 </script>
@@ -77,12 +82,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </head>
 <body>
  
-<p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker">  </p>
+<p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker2">  </p>
 
 <form method='post'>
   Human: <input type='text' name='human'><br>
-  {% for f in flight.name %}
-  <p>{{f}}</p>
+  {% for f in flight %}
+  <p>{{f.name}}</p>
+  <p>{{f.name}}</p>
   {% endfor %}
 </form>
 
