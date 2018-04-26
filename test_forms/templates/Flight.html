@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>BOT</title>
+    <script>
+        var flights = {{ flights }}
+    </script>
+  </head>
+  <body>
+      <h1>Hello, type something to begin!</h1>
+      <form method='post'>
+        Human: <input type='text' name='human'><br>
+        {% for f in flights %}
+        <p>{{ f.flight_number }} </p>
+        <p>{{ f.carrier }} </p>
+        <p>{{ f.classt }} </p>
+        <p>{{ f.depart_date }} </p>
+        <p>{{ f.arrival_date }} </p>
+        <p>{{ f.fare }} </p>
+        <p>{{ f.destination }} </p>
+        {% endfor %}
+      </form>
+  </body>
+</html>
