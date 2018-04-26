@@ -1,20 +1,10 @@
 from flask import Flask, render_template, request, flash
 from text_form import SubmissionForm, LoginForm, UserSignupForm
 from db_manager import dbm
-# from flight_o import Flight
+from object_file import Flight_Obj
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'somesecretkey'
-
-class Flight_Obj:
-    def __init__(self, flight_number, carrier, classt, depart_date, arrival_date, fare, destination):
-        self.flight_number = flight_number
-        self.carrier = carrier
-        self.classt = classt
-        self.depart_date = depart_date
-        self.arrival_date = arrival_date
-        self.fare = fare
-        self.destination = destination
 
 @app.route('/home', methods=['GET', 'POST'])
 def homepage():
@@ -76,9 +66,7 @@ def login():
 
 @app.route('/Flight', methods=['GET', 'POST'])
 def Flight():
-    flights = []
-    flights.append(Flight_Obj(123456 ,'United','Business','2018-01-04','2018-02-04','1000','Hawaii'))
-    flights.append(Flight_Obj(123456 ,'United','Business','2018-01-04','2018-02-04','1000','Detroit'))
+    flights = dbm.retrieve_flights()
     return render_template('Flight.html', flights=flights)
 
 @app.route('/hotels', methods=['GET', 'POST'])

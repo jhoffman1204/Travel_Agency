@@ -7,8 +7,7 @@
   </head>
   <body>
       <h1>Hello, type something to begin!</h1>
-      <form method='post'>
-        Human: <input type='text' name='human'><br>
+      <div>
         {% for f in flights %}
         <p>{{ f.flight_number }} </p>
         <p>{{ f.carrier }} </p>
@@ -18,6 +17,6 @@
         <p>{{ f.fare }} </p>
         <p>{{ f.destination }} </p>
         {% endfor %}
-      </form>
+      </div>
   </body>
 </html>
