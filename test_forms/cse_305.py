@@ -21,8 +21,6 @@ def signup():
             username = request.form['username']
             password = request.form['password']
             passwordConfirm = request.form['confirm-password']
-#            print("Password: " + password)
-#            print("Password Confirm: " + passwordConfirm)
             # Add to database
             if password == passwordConfirm:
                 value = dbm.add_new_user(username,password)
@@ -37,7 +35,9 @@ def signup():
                 return render_template('edwardHTML/login-register.html', title='Signup')
         # Logging in 
         else:
-            value = dbm.does_user_exist()
+            username = request.form['username']
+            password = request.form['password']
+            value = dbm.does_user_exist(username, password)
             if value == 1:
                 return render_template('homepage.html', title='Homepage')
             elif value == 0:
