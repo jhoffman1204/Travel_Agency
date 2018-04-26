@@ -4,20 +4,52 @@
     <script>
         var flights = {{ flights }}
     </script>
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
   </head>
   <body>
-      <h1>Hello, type something to begin!</h1>
-      <form method='post'>
-        Human: <input type='text' name='human'><br>
-        {% for f in flights %}
-        <p>{{ f.flight_number }} </p>
-        <p>{{ f.carrier }} </p>
-        <p>{{ f.classt }} </p>
-        <p>{{ f.depart_date }} </p>
-        <p>{{ f.arrival_date }} </p>
-        <p>{{ f.fare }} </p>
-        <p>{{ f.destination }} </p>
-        {% endfor %}
-      </form>
+      
+
+      <h2>Available Flights</h2>
+
+<table>
+
+  <tr>
+    <th>Flight</th>
+    <th>Carrier</th>
+    <th>Class</th>
+    <th>Depart Date</th>
+    <th>Arrival Date</th>
+    <th>Destination</th>
+    <th>Fare</th>
+  </tr>
+  {% for f in flights %}
+  <tr>
+    <td>{{f.flight_number}}</td>
+    <td>{{f.carrier}}</td>
+    <td>{{f.classt}}</td>
+    <td>{{f.depart_date}}</td>
+    <td>{{f.arrival_date}}</td>
+    <td>{{f.destination}}</td>
+    <td>{{f.fare}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
   </body>
 </html>
