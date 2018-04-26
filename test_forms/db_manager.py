@@ -11,9 +11,9 @@ class dbm:
     def print_test():
         print("testing")
 
-    def add_new_user(email, password):
-        cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "')")
-        connection.commit()
+#    def add_new_user(email, password):
+#        cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "')")
+#        connection.commit()
 
     def create_group(purpose, src_loc, dest_loc, group_size):
         cursor.execute("INSERT INTO Groups(purpose, source_location, destination_location, group_size) VALUES ('" + str(purpose) + "','" + str(src_loc) + "','" + str(dest_loc) + "','" + str(group_size) + "')")
@@ -77,20 +77,22 @@ class dbm:
             first_table = row
 
     def add_new_user(email, password):
-        dbm.print_all_users()
         # Checks to make sure username is valid
         x = cursor.execute("SELECT email FROM Users WHERE email = '" + email + "';") 
         if len(cursor.fetchall()) > 0:
             return False
         else:
             cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "')")
+            connection.commit()
+            dbm.print_all_users()
             return True
 
     def does_user_exist(email, password):
-        x = cursor.execute("SELECT email FROM Users WHERE email = '" + email + "';") 
-        if len(cursor.fetchall()) > 0:
-            user = cursor.fetchone()
-            return True
+        x = cursor.execute("SELECT email, password FROM Users WHERE email = '" + email + "';") 
+        profiles = cursor.fetchone()
+        if len(profiles) > 0:
+            if password == profiles[1]:
+                return 1
+            return -1
         else:
-            cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "')")
-            return False
+            return 0
