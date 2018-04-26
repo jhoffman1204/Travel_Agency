@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>BOT</title>
+    <script>
+        var flight = {{ flight }}
+    </script>
+  </head>
+  <body>
+      <h1>Hello, type something to begin!</h1>
+      <form method='post'>
+        Human: <input type='text' name='human'><br>
+        Flight: {{ flight[0] }}<br>
+        {% for f in flight %}
+        <p>{{ f }} </p>
+        {% endfor %}
+      </form>
+  </body>
+</html>

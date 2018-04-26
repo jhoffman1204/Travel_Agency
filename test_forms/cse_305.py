@@ -63,6 +63,11 @@ def login():
         return homepage()
     return render_template('login.html', title='Login', form=form)
 
+@app.route('/Flight', methods=['GET', 'POST'])
+def Flight():
+    flight = ['a' , 'b' , 'c']
+    return render_template('Flight.html', flight=flight)
+
 @app.route('/hotels', methods=['GET', 'POST'])
 def hotels():
     return render_template('hotels.html', title='Hotels')
