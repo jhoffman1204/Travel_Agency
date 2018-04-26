@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
-<title>Travel Agency</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-</style>
+<head>
+    <title>Travel Agency</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    </style>
+    
+    <link rel="stylesheet" type = text/css href= "{{ url_for('static',filename='css/profile.css') }}">
+    
+<!--    <link rel="stylesheet" type = text/css href= "../static/css/profile.css">-->
+</head>
 <body>
 
 <!-- Navbar -->
@@ -34,6 +40,34 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <a href="cruises" class="w3-bar-item w3-button w3-padding-large">Cruises</a>
     <a href="profile" style="float:right" class="w3-bar-item w3-button we-padding-large>"My Account></a>
   </div>
+</div>
+    
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+        <div class="w3-twothird">
+            <h1 class="subhead">Change Password</h1>
+            <form id="change-password" action="/" method="post" role="form" style="display: block;">
+                <div class="form-group">
+                    <div><label for="old_password">Old Password</label></div>
+                    <input type="text" name="old_password" id="old_password" tabindex="1" class="form-control" placeholder="" value="">
+                </div>
+                <div class="form-group">
+                    <div><label for="new_password">New Password</label></div>
+                    <input type="text" name="new_password" id="new_password" tabindex="1" class="form-control" placeholder="" value="">
+                </div>
+                <div class="form-group">
+                    <div><label for="new_password_confirm">Confirm New Password</label></div>
+                    <input type="text" name="new_password_confirm" id="new_password_confirm" tabindex="1" class="form-control" placeholder="" value="">
+                </div>
+                <p><button class="btn mr-2" type="submit">Update password</button></p>
+            </form>
+            <h1 class="subhead subhead-danger">Delete Account</h1>
+            <form id="change-password" action="/" method="post" role="form" style="display: block;">
+                <p><button class="subhead-danger" type="submit">Delete Account</button></p>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- Footer -->
