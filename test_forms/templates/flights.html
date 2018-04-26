@@ -57,6 +57,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </div>
   <p class="w3-xlarge">Select your arrival and departure date</p>
   <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Datepicker - Default functionality</title>
@@ -68,11 +69,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
-  </script>
+  </script> 
+  <script>
+    var flight={{flight}}
+</script>
+
 </head>
 <body>
  
 <p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker">  </p>
+
+<form method='post'>
+  Human: <input type='text' name='human'><br>
+  {% for f in flight.name %}
+  <p>{{f}}</p>
+  {% endfor %}
+</form>
+
 </body>
   <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Select</button>
 </header>
