@@ -1,0 +1,7 @@
+How to Test
+
+python removeAllTables.py - clears database
+python addAllTables.py	  - adds all tables without data
+python addTestData.py	  - adds test data (users,flights, etc.)
+python print_table [tablename] 	- prints contents of tablename
+python app.py 			- launches application

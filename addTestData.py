@@ -1,8 +1,5 @@
-# This python file prints all tables in our database
-
 #!/usr/bin/python
 import pymysql.cursors
-import sys
 
 connection = pymysql.connect(   host = 'cse305group.cqjihdluaq5a.us-east-2.rds.amazonaws.com', 
                                 user='jhoffman1204', 
@@ -10,8 +7,7 @@ connection = pymysql.connect(   host = 'cse305group.cqjihdluaq5a.us-east-2.rds.a
                                 database='tagency')
 cursor = connection.cursor()
 
-print("total: " , cursor.execute("SELECT * FROM " + str(sys.argv[1])))
-row = cursor.fetchone()
-while row:
-    print(row)
-    row = cursor.fetchone()
+with open("test_data.txt") as f:
+    for line in f:
+        cursor.execute(str(line))
+        connection.commit()
