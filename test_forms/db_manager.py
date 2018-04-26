@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import pymysql.cursors
-from object_file import Flight_Obj
+from object_file import Flight_Obj, Hotel_Obj
 
 connection = pymysql.connect(   host = 'cse305group.cqjihdluaq5a.us-east-2.rds.amazonaws.com', 
                                 user='jhoffman1204', 
@@ -102,15 +102,16 @@ class dbm:
     def retrieve_flights():
         cursor.execute("SELECT * FROM Flight")
         row = cursor.fetchall()
-        
         flights = []
-        first_table = row
-
-        print(row[2][6])
-
         for i in range(0, len(row)):
                 flights.append(Flight_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4],row[i][5],row[i][6]))
-                
         return flights
 
-dbm.retrieve_flights()
+    def retrieve_hotels():
+        cursor.execute("SELECT * FROM Accomodation")
+        row = cursor.fetchall()
+        hotels = []
+        for i in range(0, len(row)):
+                hotels.append(Hotel_Obj(row[i][0],row[i][1]))
+        return hotels
+

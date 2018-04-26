@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, flash
 from text_form import SubmissionForm, LoginForm, UserSignupForm
 from db_manager import dbm
-from object_file import Flight_Obj
+from object_file import Flight_Obj, Hotel_Obj
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'somesecretkey'

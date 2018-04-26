@@ -36,7 +36,6 @@ CREATE TABLE Location (
 );
 CREATE TABLE Accomodation (
 	address VARCHAR(255),
-	discount INTEGER, 
 	rate_per_night INTEGER,
 	PRIMARY KEY (address)
 );

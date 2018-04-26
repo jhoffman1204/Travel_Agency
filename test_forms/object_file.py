@@ -8,5 +8,7 @@ class Flight_Obj:
         self.fare = fare
         self.destination = destination
 
-    def print_stuff():
-        print("template")
+class Hotel_Obj:
+    def __init__(self, address, rate_per_night ):
+        self.address = address
+        self.rate_per_night = rate_per_night
