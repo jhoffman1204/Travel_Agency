@@ -106,7 +106,7 @@ class dbm:
         flights = []
         first_table = row
 
-        print(row[2][6])
+        #print(row[2][6])
 
         for i in range(0, len(row)):
                 flights.append(Flight_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4],row[i][5],row[i][6]))
