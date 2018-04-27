@@ -1,0 +1,17 @@
+.form-group{
+    height: 60px;
+    width: 400px;
+}
+
+.subhead{
+    border-bottom: 1px #e1e4e8 solid;
+    flex:
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+}
+
+.subhead-danger{
+    font-weight: 600;
+    color: #cb2431;
+}

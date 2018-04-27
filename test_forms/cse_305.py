@@ -86,6 +86,10 @@ def flights():
 def cruises():
     return render_template('cruises.html', title='Cruises')
 
+@app.route('/profile', methods=['GET', 'POST'])
+def cruises():
+    return render_template('profile.html', title='Profile')
+
 if __name__ == '__main__':
     app.run()
 
