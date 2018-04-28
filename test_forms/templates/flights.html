@@ -12,6 +12,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 </style>
+<head>
  <script>
         var flights = {{ flights }}
     </script>
@@ -32,6 +33,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style>
+</head>
 <body>
 
 <!-- Navbar -->
@@ -43,6 +45,7 @@ tr:nth-child(even) {
     <a href="car_rentals" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Car Rentals</a>
     <a href="flights" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Flights</a>
     <a href="cruises" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Cruises</a>
+    <a href="profile" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Account</a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -51,6 +54,7 @@ tr:nth-child(even) {
     <a href="car_rentals" class="w3-bar-item w3-button w3-padding-large">Car Rentals</a>
     <a href="flights" class="w3-bar-item w3-button w3-padding-large">Flights</a>
     <a href="cruises" class="w3-bar-item w3-button w3-padding-large">Cruises</a>
+    <a href="profile" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Account</a>
   </div>
 </div>
 
@@ -102,7 +106,17 @@ tr:nth-child(even) {
 </head>
 <body>
  
-<p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker2">  </p>
+ <form action="/action_page.php">
+  Arrival Date:
+  <input type="date" name="arrival">
+  <input type="submit">
+</form>
+
+ <form action="/action_page.php">
+  Departure Date:
+  <input type="date" name="departure">
+  <input type="submit">
+</form>
 
   <h2>Available Flights</h2>
 
@@ -130,6 +144,8 @@ tr:nth-child(even) {
   {% endfor %}
 </table>
 </body>
+
+
   <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Select</button>
 </header>
 

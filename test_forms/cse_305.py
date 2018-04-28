@@ -79,15 +79,15 @@ def car_rentals():
 
 @app.route('/flights', methods=['GET', 'POST'])
 def flights():
-	flights={'name':'flight1', 'name2':'flight2'}
-	return render_template('flights.html', title='Flights', flight=flights)
+	flights = dbm.retrieve_flights()
+	return render_template('flights.html', title='Flights', flights=flights)
 
 @app.route('/cruises', methods=['GET', 'POST'])
 def cruises():
     return render_template('cruises.html', title='Cruises')
 
 @app.route('/profile', methods=['GET', 'POST'])
-def cruises():
+def profile():
     return render_template('profile.html', title='Profile')
 
 if __name__ == '__main__':
