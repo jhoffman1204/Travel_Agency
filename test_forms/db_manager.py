@@ -87,7 +87,7 @@ class dbm:
     def does_user_exist(email, password):
         x = cursor.execute("SELECT email, password FROM Users WHERE email = '" + email + "';") 
         profiles = cursor.fetchone()
-        if len(profiles) > 0:
+        if profiles is not None:
             if password == profiles[1]:
                 return 1
             return -1
