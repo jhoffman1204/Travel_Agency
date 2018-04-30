@@ -58,7 +58,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <body>
  
 <p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker">  </p>
-        
+
+    
+<table>
+
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Rate_Per_Night</th>
+  </tr>
+  {% for f in hotels %}
+  <tr>
+    <td>{{f.name}}</td>
+    <td>{{f.address}}</td>
+    <td>{{f.rate_per_night}}</td>
+  </tr>
+  {% endfor %}
+</table>
     
     
 </body>

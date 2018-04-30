@@ -6,6 +6,8 @@ from object_file import Flight_Obj, Hotel_Obj
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'somesecretkey'
 
+current_user = ""
+
 @app.route('/home', methods=['GET', 'POST'])
 def homepage():
     return render_template('homepage.html', title='HomePage')
@@ -58,9 +60,6 @@ def signup():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-#        username = form.username.data
-#        password = form.password.data
-#        email = form.email.data
         return homepage()
     return render_template('login.html', title='Login', form=form)
 
@@ -71,7 +70,8 @@ def Flight():
 
 @app.route('/hotels', methods=['GET', 'POST'])
 def hotels():
-    return render_template('hotels.html', title='Hotels')
+    hotels = dbm.retrieve_hotels()
+    return render_template('hotels.html', title='Hotels',hotels=hotels)
 
 @app.route('/car_rentals', methods=['GET', 'POST'])
 def car_rentals():
@@ -84,7 +84,8 @@ def flights():
 
 @app.route('/cruises', methods=['GET', 'POST'])
 def cruises():
-    return render_template('cruises.html', title='Cruises')
+    cruises = dbm.retrieve_cruises()
+    return render_template('cruises.html', title='Cruises',cruises=cruises)
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():

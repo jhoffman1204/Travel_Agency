@@ -54,6 +54,27 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   } );
   </script>
 </head>
+    
+<table>
+
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Arrives</th>
+    <th>Departs</th>
+    <th>Fare</th>
+  </tr>
+  {% for f in cruises %}
+  <tr>
+    <td>{{f.source_location}}</td>
+    <td>{{f.dest_location}}</td>
+    <td>{{f.arrival_date}}</td>
+    <td>{{f.depart_date}}</td>
+    <td>{{f.fare}}</td>
+  </tr>
+  {% endfor %}
+</table>    
+    
 <body>
  
 <p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker">  </p>

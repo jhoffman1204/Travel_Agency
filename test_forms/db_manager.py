@@ -120,5 +120,3 @@ class dbm:
         for i in range(0, len(row)):
                 cruises.append(Cruise_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4]))
         return cruises
-
-    print(retrieve_cruises())
