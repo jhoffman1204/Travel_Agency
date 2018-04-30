@@ -8,6 +8,8 @@ app.config['SECRET_KEY'] = 'somesecretkey'
 
 current_user = ""
 
+cart_id = []
+
 @app.route('/home', methods=['GET', 'POST'])
 def homepage():
     return render_template('homepage.html', title='HomePage')
@@ -70,6 +72,7 @@ def hotels():
 
 @app.route('/hotels/<id>', methods=['GET', 'POST'])
 def hotels_id(id):
+    cart_id.append(id)
     hotels = dbm.retrieve_hotels()
     return render_template('hotels.html', title='Hotels',hotels=hotels)
 
@@ -80,6 +83,7 @@ def flights():
 
 @app.route('/flights/<id>', methods=['GET', 'POST'])
 def flights_id(id):
+    cart_id.append(id)
 	flights = dbm.retrieve_flights()
 	return render_template('flights.html', title='Flights', flights=flights)
 
@@ -90,6 +94,7 @@ def cruises():
 
 @app.route('/cruises/<id>', methods=['GET', 'POST'])
 def cruises_id(id):
+    cart_id.append(id)
     cruises = dbm.retrieve_cruises()
     return render_template('cruises.html', title='Cruises',cruises=cruises)    
 
