@@ -63,22 +63,23 @@ def login():
         return homepage()
     return render_template('login.html', title='Login', form=form)
 
-@app.route('/Flight', methods=['GET', 'POST'])
-def Flight():
-    flights = dbm.retrieve_flights()
-    return render_template('Flight.html', flights=flights)
-
 @app.route('/hotels', methods=['GET', 'POST'])
 def hotels():
     hotels = dbm.retrieve_hotels()
     return render_template('hotels.html', title='Hotels',hotels=hotels)
 
-@app.route('/car_rentals', methods=['GET', 'POST'])
-def car_rentals():
-    return render_template('car_rentals.html', title='Car Rentals')
+@app.route('/hotels/<id>', methods=['GET', 'POST'])
+def hotels_id(id):
+    hotels = dbm.retrieve_hotels()
+    return render_template('hotels.html', title='Hotels',hotels=hotels)
 
-@app.route('/flights', methods=['GET', 'POST'])
+@app.route('/flights/', methods=['GET', 'POST'])
 def flights():
+	flights = dbm.retrieve_flights()
+	return render_template('flights.html', title='Flights', flights=flights)
+
+@app.route('/flights/<id>', methods=['GET', 'POST'])
+def flights_id(id):
 	flights = dbm.retrieve_flights()
 	return render_template('flights.html', title='Flights', flights=flights)
 
@@ -87,9 +88,22 @@ def cruises():
     cruises = dbm.retrieve_cruises()
     return render_template('cruises.html', title='Cruises',cruises=cruises)
 
-@app.route('/profile', methods=['GET', 'POST'])
+@app.route('/cruises/<id>', methods=['GET', 'POST'])
+def cruises_id(id):
+    cruises = dbm.retrieve_cruises()
+    return render_template('cruises.html', title='Cruises',cruises=cruises)    
+
+@app.route('/profile/', methods=['GET', 'POST'])
 def profile():
     return render_template('profile.html', title='Profile')
+
+@app.route('/profile/<id>', methods=['GET', 'POST'])
+def profile_ids(id):
+    return render_template('profile.html', title='Profile')
+
+@app.route('/car_rentals', methods=['GET', 'POST'])
+def car_rentals():
+    return render_template('car_rentals.html', title='Car Rentals')
 
 if __name__ == '__main__':
     app.run()
