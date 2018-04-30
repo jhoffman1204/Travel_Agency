@@ -103,6 +103,13 @@ class dbm:
         cursor.execute("SELECT * FROM Flight")
         row = cursor.fetchall()
         flights = []
+<<<<<<< HEAD
+=======
+        first_table = row
+
+        #print(row[2][6])
+
+>>>>>>> 867f601d8be7fa122a66f3ae08f50a6c5ce392c8
         for i in range(0, len(row)):
                 flights.append(Flight_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4],row[i][5],row[i][6]))
         return flights
