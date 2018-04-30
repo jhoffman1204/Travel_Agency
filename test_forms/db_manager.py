@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import pymysql.cursors
-from object_file import Flight_Obj, Hotel_Obj
+from object_file import Flight_Obj, Hotel_Obj, Cruise_Obj
 
 connection = pymysql.connect(   host = 'cse305group.cqjihdluaq5a.us-east-2.rds.amazonaws.com', 
                                 user='jhoffman1204', 
@@ -11,10 +11,6 @@ cursor = connection.cursor()
 class dbm:
     def print_test():
         print("testing")
-
-#    def add_new_user(email, password):
-#        cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "')")
-#        connection.commit()
 
     def create_group(purpose, src_loc, dest_loc, group_size):
         cursor.execute("INSERT INTO Groups(purpose, source_location, destination_location, group_size) VALUES ('" + str(purpose) + "','" + str(src_loc) + "','" + str(dest_loc) + "','" + str(group_size) + "')")
@@ -103,13 +99,8 @@ class dbm:
         cursor.execute("SELECT * FROM Flight")
         row = cursor.fetchall()
         flights = []
-<<<<<<< HEAD
-=======
         first_table = row
 
-        #print(row[2][6])
-
->>>>>>> 867f601d8be7fa122a66f3ae08f50a6c5ce392c8
         for i in range(0, len(row)):
                 flights.append(Flight_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4],row[i][5],row[i][6]))
         return flights
@@ -119,6 +110,15 @@ class dbm:
         row = cursor.fetchall()
         hotels = []
         for i in range(0, len(row)):
-                hotels.append(Hotel_Obj(row[i][0],row[i][1]))
+                hotels.append(Hotel_Obj(row[i][0],row[i][1],row[i][2]))
         return hotels
 
+    def retrieve_cruises():
+        cursor.execute("SELECT * FROM Cruise")
+        row = cursor.fetchall()
+        cruises = []
+        for i in range(0, len(row)):
+                cruises.append(Cruise_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4]))
+        return cruises
+
+    print(retrieve_cruises())

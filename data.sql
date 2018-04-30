@@ -35,6 +35,7 @@ CREATE TABLE Location (
 	PRIMARY KEY (location_ID)
 );
 CREATE TABLE Accomodation (
+    name VARCHAR(255),
 	address VARCHAR(255),
 	rate_per_night INTEGER,
 	PRIMARY KEY (address)
@@ -48,8 +49,9 @@ CREATE TABLE Accomodation_facilities (
 		ON DELETE NO ACTION
 );
 CREATE TABLE Cruise (
-	cruise_number INTEGER AUTO_INCREMENT,
+	cruise_number INTEGER,
 	source_location VARCHAR(255), 
+    dest_location VARCHAR(255),
 	arrival_date DATE,
 	depart_date DATE,
 	fare INTEGER,
