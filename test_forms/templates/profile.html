@@ -17,9 +17,14 @@
     <link rel="stylesheet" type = text/css href= "{{ url_for('static',filename='css/profile.css') }}">
     
 <!--    <link rel="stylesheet" type = text/css href= "../static/css/profile.css">-->
+    <style>
+        #PasswordErrorMessage {color: #cb2431}
+    </style>
+    <style>
+        #PasswordSuccessMessage {color: forestgreen}
+    </style>
 </head>
 <body>
-
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-red w3-card w3-left-align w3-large">
@@ -52,16 +57,18 @@
             <form id="change-password" action="/password_change" method="post" role="form" style="display: block;">
                 <div class="form-group">
                     <div><label for="old_password">Old Password</label></div>
-                    <input type="text" name="old_password" id="old_password" tabindex="1" class="form-control" placeholder="" value="">
+                    <input type="password" name="old_password" id="old_password" tabindex="1" class="form-control" placeholder="" value="">
                 </div>
                 <div class="form-group">
                     <div><label for="new_password">New Password</label></div>
-                    <input type="text" name="new_password" id="new_password" tabindex="1" class="form-control" placeholder="" value="">
+                    <input type="password" name="new_password" id="new_password" tabindex="1" class="form-control" placeholder="" value="">
                 </div>
                 <div class="form-group">
                     <div><label for="new_password_confirm">Confirm New Password</label></div>
-                    <input type="text" name="new_password_confirm" id="new_password_confirm" tabindex="1" class="form-control" placeholder="" value="">
+                    <input type="password" name="new_password_confirm" id="new_password_confirm" tabindex="1" class="form-control" placeholder="" value="">
                 </div>
+                <div id="PasswordErrorMessage"></div>
+                <div id="PasswordSuccessMessage"></div>
                 <p><button class="btn mr-2" type="submit">Update password</button></p>
             </form>
             <h1 class="subhead subhead-danger">Delete Account</h1>
@@ -98,6 +105,16 @@ function myFunction() {
     }
 }
 </script>
+    
+<script>
+    var passwordErrorMessage = '{{ passwordErrorMessage }}';
+    document.getElementById("PasswordErrorMessage").innerHTML = passwordErrorMessage.toString();
+</script>
 
+<script>
+    var passwordSuccessMessage = '{{ passwordSuccessMessage }}';
+    document.getElementById("PasswordSuccessMessage").innerHTML = passwordSuccessMessage.toString();
+</script>
+    
 </body>
 </html>
