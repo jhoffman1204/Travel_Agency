@@ -64,9 +64,21 @@ class dbm:
         cursor.execute("INSERT INTO Group_Accomodation(address, groupID, cost, reservation_date) VALUES ('" + str(address) + "','"+ str(groupID) + "','"+ str(cost)+ "','"+ str(reservation_date) + "')")
         connection.commit()
 
-    def get_range_dates(begin , end):
-        cursor.execute("SELECT * FROM Orders WHERE OrderDate BETWEEN #" + str(begin) +  "# AND #" + str(begin) +  "#;")
-        
+    def get_range_dates(arrival , depart):
+        depart = depart.replace("-", "")
+        print("depart" , depart)
+        arrival = arrival.replace("-", "")
+        print("arrival" , arrival)
+        cursor.execute("SELECT * FROM Flight WHERE depart_date >" + depart + " AND arrival_date < " + arrival +";")
+        row = cursor.fetchall()
+        flights = []
+        first_table = row
+
+        for i in range(0, len(row)):
+                print("row" , row)
+                flights.append(Flight_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4],row[i][5],row[i][6]))
+        return flights
+
     def print_all_users():
         cursor.execute("SELECT * FROM Users")
         row = cursor.fetchall()

@@ -99,9 +99,9 @@ def flights_specific():
     print(arrival)
     print(depart)
 
-    dmb.get_range_dates(arrival, depart)
+    flights = dbm.get_range_dates(arrival, depart)
 
-    return render_template('flights.html', title='Flights')
+    return render_template('flights.html', title='Flights', flights=flights)
 
 @app.route('/flights/<id>', methods=['GET', 'POST'])
 def flights_id(id):
