@@ -120,3 +120,20 @@ class dbm:
         for i in range(0, len(row)):
                 cruises.append(Cruise_Obj(row[i][1],row[i][2],row[i][3],row[i][4],row[i][5]))
         return cruises
+
+    # this method is under our assumption that flights are 6
+    # accomodations are 5 and cruises are 4 in length of id number
+    def retrieve_items(ids):
+
+        for id_num in ids:
+            if(len(str(id_num)) == 4):
+
+            elif(len(str(id_num)) == 5):
+
+            elif(len(str(id_num)) == 6):
+        cursor.execute("SELECT * FROM Cruise")
+        row = cursor.fetchall()
+        cruises = []
+        for i in range(0, len(row)):
+                cruises.append(Cruise_Obj(row[i][1],row[i][2],row[i][3],row[i][4],row[i][5]))
+        return cruises
