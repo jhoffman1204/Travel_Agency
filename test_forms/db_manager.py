@@ -64,6 +64,9 @@ class dbm:
         cursor.execute("INSERT INTO Group_Accomodation(address, groupID, cost, reservation_date) VALUES ('" + str(address) + "','"+ str(groupID) + "','"+ str(cost)+ "','"+ str(reservation_date) + "')")
         connection.commit()
 
+    def get_range_dates():
+        cursor.execute("SELECT * FROM Orders WHERE OrderDate BETWEEN #07/04/1996# AND #07/09/1996#;")
+
         
     def print_all_users():
         cursor.execute("SELECT * FROM Users")

@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'somesecretkey'
 
 current_user = ""
+current_user_id = 0
 
 cart_id = []
 
@@ -51,9 +52,10 @@ def signup():
         else:
             username = request.form['username']
             password = request.form['password']
+            current_user = username
             value = dbm.does_user_exist(username, password)
             if value == 1:
-                return render_template('homepage.html', title='Homepage')
+                return render_template('homepage.html', title='Homepage', name=current_user)
             elif value == 0:
                 flash('Username does not exist')
                 return render_template('edwardHTML/login-register.html', title='Signup')
@@ -89,6 +91,14 @@ def hotels_id(id):
 def flights():
 	flights = dbm.retrieve_flights()
 	return render_template('flights.html', title='Flights', flights=flights)
+
+@app.route('/flights_specific', methods=['GET', 'POST'])
+def flights_specific():
+    arrival = request.form['Arrival Date']
+    depart =  request.form['Departure Date']
+    print(arrival)
+    print(depart)
+    return render_template('flights.html', title='Flights')
 
 @app.route('/flights/<id>', methods=['GET', 'POST'])
 def flights_id(id):
@@ -138,11 +148,6 @@ def checkout_complete():
     card_month = request.form['month']
     card_year = request.form['year']
     card_cvv = request.form['cvv']
-    print(card_type)
-    print(card_num)
-    print(card_month)
-    print(card_year)
-    print(card_cvv)
 
     date = str(card_year) + "-" + str(card_month) + "-00"
 
