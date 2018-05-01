@@ -128,7 +128,7 @@ tr:nth-child(even) {
     <td>{{f.name}}</td>
     <td>{{f.address}}</td>
     <td>{{f.rate_per_night}}</td>
-    <td><a href="{{ url_for('hotels_id', id=f.address) }}">Add To Cart</a></td>
+    <td><a href="{{ url_for('hotels_id', id=f.accomodation_id) }}">Add To Cart</a></td>
   </tr>
   {% endfor %}
 </table>
