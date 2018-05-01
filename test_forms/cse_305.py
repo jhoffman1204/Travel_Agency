@@ -52,9 +52,9 @@ def signup():
         else:
             username = request.form['username']
             password = request.form['password']
-            current_user = username
             value = dbm.does_user_exist(username, password)
             if value == 1:
+                current_user = username
                 return render_template('homepage.html', title='Homepage', name=current_user)
             elif value == 0:
                 flash('Username does not exist')
@@ -154,6 +154,26 @@ def checkout_complete():
     dbm.create_payment(card_num , date, card_cvv, card_type)
 
     return render_template('checkout_review.html', title='Cart')
+
+@app.route('/password_change', methods=['POST'])
+def password_change():
+    print("Hit")
+    old_password = request.form['old_password']
+    new_password = request.form['new_password']
+    confirm_password = request.form['new_password_confirm']
+    
+    # Checks old password against database
+    check_old_password = dbm.get_user_password(current_user, old_password)
+    if check_old_password == 1:
+        print("Old password confirmed")
+        
+        # Checks to make sure new_password and confirm_passwod match
+        if new_password == confirm_password:
+            dbm.set_user_password(current_user, new_password)
+            flash('Password has been updated')
+        else:
+            flash('New passwords do not match')
+    return render_template('profile.html', title='Profile')    
 
 @app.route('/car_rentals', methods=['GET', 'POST'])
 def car_rentals():
