@@ -115,6 +115,7 @@ tr:nth-child(even) {
 <table>
 
   <tr>
+    <th>Number</th>
     <th>From</th>
     <th>To</th>
     <th>Arrives</th>
@@ -124,6 +125,7 @@ tr:nth-child(even) {
   </tr>
   {% for f in cruises %}
   <tr>
+    <td>{{f.cruise_number}}</td>
     <td>{{f.source_location}}</td>
     <td>{{f.dest_location}}</td>
     <td>{{f.arrival_date}}</td>

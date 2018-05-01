@@ -9,13 +9,15 @@ class Flight_Obj:
         self.destination = destination
 
 class Hotel_Obj:
-    def __init__(self,name,address, rate_per_night ):
+    def __init__(self,accomodation_id, name,address, rate_per_night ):
+        self.accomodation_id = accomodation_id
         self.name = name
         self.address = address
         self.rate_per_night = rate_per_night
 
 class Cruise_Obj:
-    def __init__(self, source_location, dest_location, arrival_date, depart_date, fare):
+    def __init__(self,cruise_number,source_location, dest_location, arrival_date, depart_date, fare):
+        self.cruise_number = cruise_number
         self.source_location = source_location
         self.dest_location = dest_location
         self.arrival_date = arrival_date
