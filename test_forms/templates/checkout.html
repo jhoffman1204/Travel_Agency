@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Agency</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    </style>
+    
+    <link rel="stylesheet" type = text/css href= "{{ url_for('static',filename='css/profile.css') }}">
+    
+<!--    <link rel="stylesheet" type = text/css href= "../static/css/profile.css">-->
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/home" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="/hotels" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Hotels</a>
+    <a href="/car_rentals" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Car Rentals</a>
+    <a href="/flights/0" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Flights</a>
+    <a href="/cruises" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Cruises</a>
+    <a href="/profile" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Account</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="/hotels" class="w3-bar-item w3-button w3-padding-large">Hotels</a>
+    <a href="/car_rentals" class="w3-bar-item w3-button w3-padding-large">Car Rentals</a>
+    <a href="/flights" class="w3-bar-item w3-button w3-padding-large">Flights</a>
+    <a href="/cruises" class="w3-bar-item w3-button w3-padding-large">Cruises</a>
+    <a href="/profile" style="float:right" class="w3-bar-item w3-button we-padding-large>"My Account></a>
+  </div>
+</div>
+    
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+        <div class="w3-twothird">
+            <h1 class="subhead">Cart</h1>
+            <form id="change-password" action="/" method="post" role="form" style="display: block;">
+                <div>
+                    <div><label>Email</label></div>
+                    <input placeholder="Email" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                <div>
+                    <div><label>Name</label></div>
+                    <input placeholder="Name" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                <div>
+                    <div><label>Address</label></div>
+                    <input placeholder="Address" autocapitalize="off" spellcheck="false" value="">
+                    <input placeholder="AddressTwo" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                <div>
+                    <div><label>City</label></div>
+                    <input placeholder="City" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                <div>
+                    <div><label>Country</label></div>
+                    <input placeholder="Country" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                <div>
+                    <div><label>State</label></div>
+                    <input placeholder="State" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                <div>
+                    <div><label>Zip Code</label></div>
+                    <input placeholder="Zip Code" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                <div>
+                    <div><label>Phone</label></div>
+                    <input placeholder="Phone" autocapitalize="off" spellcheck="false" value="">
+                </div>
+                
+                <!-- CARD INFO-->
+                <div>
+                    <div><label>Card Number</label></div>
+                    <input placeholder="Card Number" value="">
+                </div>
+                <div>
+                    <div><label>Expiration Month</label></div>
+                    <input placeholder="Expiration Month" value ="">
+                </div>
+                <div>
+                    <div><label>Year</label></div>
+                    <input placeholder="Expiration Year" value ="">
+                </div>
+                <div>
+                    <div><label>CVV</label></div>
+                    <input placeholder="CVV" year="">
+                </div>
+                
+                <p><button class="btn mr-2" type="submit">Checkout</button></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+    <p>Created by James Hoffman, Jamie Kunzmann, and Edward Rozario </p>
+
+    <p>&copy; CSE 305</p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>
