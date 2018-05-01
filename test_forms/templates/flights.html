@@ -80,8 +80,9 @@ tr:nth-child(even) {
   </select>
 </div>
   <p class="w3-xlarge">Select your arrival and departure date</p>
+  <!--
   <head>
-
+      
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Datepicker - Default functionality</title>
@@ -93,24 +94,18 @@ tr:nth-child(even) {
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
-  </script> 
-   <script>
-  $( function() {
-    $( "#datepicker2" ).datepicker();
-  } );
-  </script> 
-  <script>
-    var flight={{flight}}
-</script>
-
+  </script>
 </head>
+-->
 <body>
  
- <form action="/action_page.php">
-  <p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker">  </p>
-<!--  <input type="date" name="tripDates">-->
-  <input type="submit">
-</form>
+  <form>
+  Arrival Date:
+  <input type="date" name="Arrival Date">   Departure Date:
+  <input type="date" name="Departure Date">
+
+   <input type="submit">
+  </form>
 
 <!--
  <form action="/action_page.php">

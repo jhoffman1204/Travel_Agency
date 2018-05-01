@@ -40,7 +40,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">Car Rentals</h1>
   <p class="w3-xlarge">Select your travel dates</p>
+ 
+ <!--
   <head>
+      
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Datepicker - Default functionality</title>
@@ -54,11 +57,20 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   } );
   </script>
 </head>
+-->
 <body>
  
-<p>Arrival Date: <input type="text" id="datepicker">   Departure Date:<input type="text" id="datepicker">  </p>
-</body>
-  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Select</button>
+  <form>
+  Arrival Date:
+  <input type="date" name="Arrival Date">   Departure Date:
+  <input type="date" name="Departure Date">
+
+   <input type="submit">
+  </form>
+
+
+
+
 </header>
 
 <!--delete all this later or edit it to be relevant -->
