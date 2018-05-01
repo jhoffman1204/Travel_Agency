@@ -131,10 +131,24 @@ def checkout():
 
     return render_template('checkout.html', title='Cart')
 
-@app.route('/checkout_complete', methods=['GET', 'POST'])
-def checkout_complete(card_number, card_expiration_date, payment_type):
+@app.route('/checkout_complete', methods=['POST'])
+def checkout_complete():
+    card_type = request.form['type']
+    card_num = request.form['cardnum']
+    card_month = request.form['month']
+    card_year = request.form['year']
+    card_cvv = request.form['cvv']
+    print(card_type)
+    print(card_num)
+    print(card_month)
+    print(card_year)
+    print(card_cvv)
 
-    return render_template('checkout.html', title='Cart')
+    date = str(card_year) + "-" + str(card_month) + "-00"
+
+    dbm.create_payment(card_num , date, card_cvv, card_type)
+
+    return render_template('checkout_review.html', title='Cart')
 
 @app.route('/car_rentals', methods=['GET', 'POST'])
 def car_rentals():
