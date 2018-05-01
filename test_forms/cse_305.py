@@ -123,7 +123,8 @@ def checkout():
     print(flights)
     print(hotels)
     print(cruises)
-    return render_template('checkout.html', title='Checkout')
+    return render_template('checkout.html', title='Checkout',
+    flights = flights, hotels = hotels, cruises=cruises)
 
 @app.route('/car_rentals', methods=['GET', 'POST'])
 def car_rentals():

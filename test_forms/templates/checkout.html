@@ -1,0 +1,47 @@
+<html>
+<head>
+        <script>
+                var flights = {{ flights }}
+                var cruises = {{ cruises }}
+                var hotels = {{ hotels }}
+        </script>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <table>
+            {% for f in cruises %}
+            <tr>
+              <td>{{f.cruise_number}}</td>
+              <td>{{f.source_location}}</td>
+              <td>{{f.dest_location}}</td>
+              <td>{{f.arrival_date}}</td>
+              <td>{{f.depart_date}}</td>
+              <td>{{f.fare}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    <table>
+            {% for h in hotels %}
+            <tr>
+              <td>{{h.accomodation_id}}</td>
+              <td>{{h.name}}</td>
+              <td>{{h.address}}</td>
+              <td>{{h.rate_per_night}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+    <table>
+            {% for i in flights %}
+            <tr>
+              <td>{{i.flight_number}}</td>
+              <td>{{i.carrier}}</td>
+              <td>{{i.classt}}</td>
+              <td>{{i.depart_date}}</td>
+              <td>{{i.arrival_date}}</td>
+              <td>{{i.destination}}</td>
+              <td>{{i.fare}}</td>
+            </tr>
+            {% endfor %}
+          </table> 
+</body>
+</html>
