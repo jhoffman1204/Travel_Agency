@@ -24,7 +24,8 @@ CREATE TABLE Group_Passengers (
 );
 CREATE TABLE Payment (
 	card_number INTEGER,
-	card_expiration_date DATE, 
+	card_expiration_date DATE,
+	cvv INTEGER, 
 	payment_type VARCHAR(255),
 	PRIMARY KEY (card_number)
 );
