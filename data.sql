@@ -35,6 +35,7 @@ CREATE TABLE Location (
 	PRIMARY KEY (location_ID)
 );
 CREATE TABLE Accomodation (
+    accomodation_id INTEGER,
     name VARCHAR(255),
 	address VARCHAR(255),
 	rate_per_night INTEGER,

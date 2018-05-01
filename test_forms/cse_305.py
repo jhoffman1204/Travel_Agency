@@ -8,6 +8,15 @@ app.config['SECRET_KEY'] = 'somesecretkey'
 
 current_user = ""
 
+cart_id = []
+
+# need to be able to return flights, hotels and cruises
+def get_current_cart_items():
+    # need current items added to the cart
+    for id in cart_id:
+        # dbm.retrieve_item(id)
+        print(id)
+
 @app.route('/home', methods=['GET', 'POST'])
 def homepage():
     return render_template('homepage.html', title='HomePage')
@@ -70,6 +79,7 @@ def hotels():
 
 @app.route('/hotels/<id>', methods=['GET', 'POST'])
 def hotels_id(id):
+    cart_id.append(id)
     hotels = dbm.retrieve_hotels()
     return render_template('hotels.html', title='Hotels',hotels=hotels)
 
@@ -80,8 +90,9 @@ def flights():
 
 @app.route('/flights/<id>', methods=['GET', 'POST'])
 def flights_id(id):
-	flights = dbm.retrieve_flights()
-	return render_template('flights.html', title='Flights', flights=flights)
+    cart_id.append(id)
+    flights = dbm.retrieve_flights()
+    return render_template('flights.html', title='Flights', flights=flights)
 
 @app.route('/cruises', methods=['GET', 'POST'])
 def cruises():
@@ -90,11 +101,13 @@ def cruises():
 
 @app.route('/cruises/<id>', methods=['GET', 'POST'])
 def cruises_id(id):
+    cart_id.append(id)
     cruises = dbm.retrieve_cruises()
     return render_template('cruises.html', title='Cruises',cruises=cruises)    
 
 @app.route('/profile/', methods=['GET', 'POST'])
 def profile():
+    get_current_cart_items()
     return render_template('profile.html', title='Profile')
 
 @app.route('/profile/<id>', methods=['GET', 'POST'])
@@ -107,4 +120,7 @@ def car_rentals():
 
 if __name__ == '__main__':
     app.run()
+
+
+
 
