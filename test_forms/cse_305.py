@@ -131,9 +131,11 @@ def checkout():
 
     return render_template('checkout.html', title='Cart')
 
-@app.route('/checkout_complete', methods=['GET', 'POST'])
-def checkout_complete(card_number, card_expiration_date, payment_type):
-
+@app.route('/checkout_complete', methods=['POST'])
+def checkout_complete():
+    x = request.form['cardnum']
+    print(x)
+    # print(card_number)s
     return render_template('checkout.html', title='Cart')
 
 @app.route('/car_rentals', methods=['GET', 'POST'])
