@@ -116,19 +116,30 @@ def profile():
 def profile_ids(id):
     return render_template('profile.html', title='Profile')
 
-@app.route('/checkout', methods=['GET', 'POST'])
-def checkout():
+@app.route('/cart', methods=['GET', 'POST'])
+def cart():
     items = get_current_cart_items()
     flights, hotels, cruises = dbm.retrieve_items(items)
     print(flights)
     print(hotels)
     print(cruises)
-    return render_template('checkout.html', title='Checkout',
+    return render_template('cart.html', title='Cart',
     flights = flights, hotels = hotels, cruises=cruises)
+
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout():
+
+    return render_template('checkout.html', title='Cart')
+
+@app.route('/checkout_complete', methods=['GET', 'POST'])
+def checkout_complete(card_number, card_expiration_date, payment_type):
+
+    return render_template('checkout.html', title='Cart')
 
 @app.route('/car_rentals', methods=['GET', 'POST'])
 def car_rentals():
     return render_template('car_rentals.html', title='Car Rentals')
+
 
 if __name__ == '__main__':
     app.run()
