@@ -98,6 +98,9 @@ def flights_specific():
     depart =  request.form['Departure Date']
     print(arrival)
     print(depart)
+
+    dmb.get_range_dates(arrival, depart)
+
     return render_template('flights.html', title='Flights')
 
 @app.route('/flights/<id>', methods=['GET', 'POST'])
