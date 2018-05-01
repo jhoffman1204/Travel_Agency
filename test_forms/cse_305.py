@@ -16,6 +16,8 @@ def get_current_cart_items():
     for id in cart_id:
         # dbm.retrieve_item(id)
         print(id)
+    
+    return cart_id
 
 @app.route('/home', methods=['GET', 'POST'])
 def homepage():
@@ -113,6 +115,15 @@ def profile():
 @app.route('/profile/<id>', methods=['GET', 'POST'])
 def profile_ids(id):
     return render_template('profile.html', title='Profile')
+
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout():
+    items = get_current_cart_items()
+    flights, hotels, cruises = dbm.retrieve_items(items)
+    print(flights)
+    print(hotels)
+    print(cruises)
+    return render_template('checkout.html', title='Checkout')
 
 @app.route('/car_rentals', methods=['GET', 'POST'])
 def car_rentals():
