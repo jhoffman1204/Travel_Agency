@@ -42,6 +42,7 @@ CREATE TABLE Accomodation (
 	PRIMARY KEY (address)
 );
 CREATE TABLE Accomodation_facilities (
+    
 	address VARCHAR(255), 
 	facilities VARCHAR(255),
 	PRIMARY KEY (address, facilities),

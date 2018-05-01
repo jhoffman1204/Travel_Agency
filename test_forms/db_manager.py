@@ -125,15 +125,25 @@ class dbm:
     # accomodations are 5 and cruises are 4 in length of id number
     def retrieve_items(ids):
 
+        cruises = []
+        hotels = []
+        flights = []
+
         for id_num in ids:
             if(len(str(id_num)) == 4):
-
+                cursor.execute("SELECT * FROM Cruise WHERE cruise_number = " + str(id_num))
+                row = cursor.fetchall()
+                for i in range(0, len(row)):
+                    objects.append(Cruise_Obj(row[i][1],row[i][2],row[i][3],row[i][4],row[i][5]))
             elif(len(str(id_num)) == 5):
-
+                cursor.execute("SELECT * FROM Accomodation WHERE accomodation_id = " + str(id_num))
+                row = cursor.fetchall()
+                for i in range(0, len(row)):
+                    hotels.append(Hotel_Obj(row[i][0],row[i][1],row[i][2]))
             elif(len(str(id_num)) == 6):
-        cursor.execute("SELECT * FROM Cruise")
-        row = cursor.fetchall()
-        cruises = []
-        for i in range(0, len(row)):
-                cruises.append(Cruise_Obj(row[i][1],row[i][2],row[i][3],row[i][4],row[i][5]))
-        return cruises
+                cursor.execute("SELECT * FROM Flight WHERE flight_number = " + str(id_num))
+                row = cursor.fetchall()
+                for i in range(0, len(row)):
+                    flights.append(Flight_Obj(row[i][0],row[i][1],row[i][2],row[i][3],row[i][4],row[i][5],row[i][6]))
+
+        return flights, hotels, cruises
