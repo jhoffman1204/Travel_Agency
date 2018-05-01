@@ -116,6 +116,7 @@ tr:nth-child(even) {
 <table>
 
   <tr>
+    <th>Number</th>
     <th>Name</th>
     <th>Address</th>
     <th>Rate_Per_Night</th>
@@ -123,6 +124,7 @@ tr:nth-child(even) {
   </tr>
   {% for f in hotels %}
   <tr>
+    <td>{{f.accomodation_id}}</td>
     <td>{{f.name}}</td>
     <td>{{f.address}}</td>
     <td>{{f.rate_per_night}}</td>
