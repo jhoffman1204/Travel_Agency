@@ -20,8 +20,8 @@ class dbm:
         cursor.execute("INSERT INTO Groups(groupID, age, Name, gender) VALUES ('" + str(groupID) + "','" + str(age) + "','" + str(Name) + "','" + str(gender) + "')")
         connection.commit()
 
-    def create_Payment(card_number, card_expiration_date, payment_type):
-        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, payment_type) VALUES ('" + str(card_number) + "','" + str(card_expiration_date) + "','" + str(payment_type) + "')")
+    def create_payment(card_number, card_expiration_date,cvv, payment_type):
+        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + str(card_number) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
         connection.commit()
 
     def create_Accomodation(address , discount, rate_per_night):
