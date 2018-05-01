@@ -95,6 +95,21 @@ class dbm:
             return -1
         else:
             return 0
+        
+    def get_user_password(email, password):
+        print(email)
+        x = cursor.execute("SELECT password FROM Users WHERE email = '" + email + "';")
+        profile = cursor.fetchone()
+        print(profile)
+        if password == profile[0]:
+            return 1
+        return 0
+    
+    def set_user_password(username, newPassword):
+        cursor.execute("UPDATE Users SET password = '" + newPassword + "'WHERE username = '" + username + "';")
+        print("Password updated")
+        connection.commit()
+        dbm.print_all_users()
 
     
     def retrieve_flights():
