@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import pymysql.cursors
-from object_file import Flight_Obj, Hotel_Obj, Cruise_Obj
+from object_file import Flight_Obj, Hotel_Obj, Cruise_Obj, Group
 
 connection = pymysql.connect(   host = 'cse305group.cqjihdluaq5a.us-east-2.rds.amazonaws.com', 
                                 user='jhoffman1204', 
@@ -12,9 +12,25 @@ class dbm:
     def print_test():
         print("testing")
 
-    def create_group(purpose, src_loc, dest_loc, group_size):
-        cursor.execute("INSERT INTO Groups(purpose, source_location, destination_location, group_size) VALUES ('" + str(purpose) + "','" + str(src_loc) + "','" + str(dest_loc) + "','" + str(group_size) + "')")
+    def create_group(group_name, purpose, src_loc, dest_loc, group_size):
+        cursor.execute("INSERT INTO Groups(group_name, purpose, source_location, destination_location, group_size) VALUES ('"+ str(group_name) + "','" + str(purpose) + "','" + str(src_loc) + "','" + str(dest_loc) + "','" + str(group_size) + "')")
         connection.commit()
+
+    def add_user_group(userID, groupID):
+        cursor.execute("INSERT INTO Group_User(userId, groupID) VALUES ('"+ str(userID) + "','" + str(groupID) + "')")
+        connection.commit()
+
+    def get_user_id(username):
+        cursor.execute("SELECT userId FROM Users WHERE email = '" + username + "';")
+        row = cursor.fetchall()
+        print(row[0][0])
+        return row[0][0]
+    
+    def get_group_id(groupname):
+        cursor.execute("SELECT groupID FROM Groups WHERE group_name = '" + groupname + "';")
+        row = cursor.fetchall()
+        print(row[0][0])
+        return row[0][0]
 
     def create_group_passenger(groupID, age, Name, gender):
         cursor.execute("INSERT INTO Groups(groupID, age, Name, gender) VALUES ('" + str(groupID) + "','" + str(age) + "','" + str(Name) + "','" + str(gender) + "')")
@@ -146,6 +162,17 @@ class dbm:
         for i in range(0, len(row)):
                 cruises.append(Cruise_Obj(row[i][0], row[i][1],row[i][2],row[i][3],row[i][4],row[i][5]))
         return cruises
+
+    
+    def retrieve_group(userID):
+        #AND Group_User.userId = '" + userID + "'
+        print(userID)
+        cursor.execute("SELECT * FROM Groups, Group_User WHERE Groups.groupID = Group_User.groupID AND Group_User.userId='" + str(userID) +"';")
+        row = cursor.fetchall()
+        groups = []
+        for i in range(0, len(row)):
+                groups.append(Group(row[i][0], row[i][1],row[i][2],row[i][3],row[i][4],row[i][5]))
+        return groups
 
     # this method is under our assumption that flights are 6
     # accomodations are 5 and cruises are 4 in length of id number

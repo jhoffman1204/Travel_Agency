@@ -1,0 +1,53 @@
+<html>
+    <head>
+            <script>
+                    var groups = {{ groups }}
+            </script>
+    </head>
+<body>
+    <h1>My Groups</h1>
+    <table>
+            <tr>
+              <th>Group Name</th>
+              <th>Purpose</th>
+              <th>Source Location</th>
+              <th>Destination Location</th>
+              <th>Group Size</th>
+            </tr>
+            {% for f in groups %}
+            <tr>
+              <td>{{f.group_name}}</td>
+              <td>{{f.purpose}}</td>
+              <td>{{f.source_location}}</td>
+              <td>{{f.destination_location}}</td>
+              <td>{{f.group_size}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+    <h1>Create Group</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.group_name.label }}<br>
+            {{ form.group_name(size=32) }}
+        </p>
+        <p>
+            {{ form.purpose.label }}<br>
+            {{ form.purpose(size=32) }}
+        </p>
+        <p>
+            {{ form.group_size.label }}<br>
+            {{ form.group_size(size=32) }}
+        </p>
+        <p>
+            {{ form.source_location.label }}<br>
+            {{ form.source_location(size=32) }}
+        </p>
+        <p>
+            {{ form.destination_location.label }}<br>
+            {{ form.destination_location(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+</html>

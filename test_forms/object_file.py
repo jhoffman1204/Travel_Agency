@@ -23,3 +23,12 @@ class Cruise_Obj:
         self.arrival_date = arrival_date
         self.depart_date = depart_date
         self.fare = fare
+
+class Group:
+    def __init__(self,group_id,group_name,purpose, source_location, destination_location, group_size):
+        self.group_id = group_id
+        self.group_name = group_name
+        self.purpose = purpose
+        self.source_location = source_location
+        self.destination_location = destination_location
+        self.group_size = group_size

@@ -17,5 +17,11 @@ class UserSignupForm(FlaskForm):
     email = StringField('Email')
     password = StringField('Password')
     submit = SubmitField('Submit')
-    
-    
+
+class GroupCreationForm(FlaskForm):
+    group_name = StringField('Group Name')
+    purpose = StringField('Purpose')
+    group_size = StringField('Group Size')
+    source_location = StringField('Source Location')
+    destination_location = StringField('Destination Location')
+    submit = SubmitField('Submit')

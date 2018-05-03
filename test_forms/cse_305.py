@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash
-from text_form import SubmissionForm, LoginForm, UserSignupForm
+from text_form import SubmissionForm, LoginForm, UserSignupForm, GroupCreationForm
 from db_manager import dbm
 from object_file import Flight_Obj, Hotel_Obj
 
@@ -130,13 +130,35 @@ def profile():
 def profile_ids(id):
     return render_template('profile.html', title='Profile')
 
+@app.route('/create_group', methods=['GET', 'POST'])
+def create_group():
+
+    groups = dbm.retrieve_group(dbm.get_user_id(current_user))
+
+    form = GroupCreationForm()
+    if form.validate_on_submit():
+        group_name = form.group_name.data
+        purpose = form.purpose.data
+        group_size = form.group_size.data
+        source_location = form.source_location.data
+        destination_location = form.destination_location.data
+        dbm.create_group(group_name, purpose, source_location, destination_location, group_size)
+
+        userID = dbm.get_user_id(current_user)
+        groupID = dbm.get_group_id(group_name)
+        dbm.add_user_group(userID , groupID)
+
+        return homepage()
+    return render_template('create_group.html', title='Create', form=form, groups=groups)
+
+
 @app.route('/cart', methods=['GET', 'POST'])
 def cart():
     items = get_current_cart_items()
     flights, hotels, cruises = dbm.retrieve_items(items)
-    print(flights)
-    print(hotels)
-    print(cruises)
+    # print(flights)
+    # print(hotels)
+    # print(cruises)
     return render_template('cart.html', title='Cart',
     flights = flights, hotels = hotels, cruises=cruises)
 

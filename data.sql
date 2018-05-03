@@ -5,6 +5,7 @@ CREATE TABLE Transportation (
 );
 CREATE TABLE Groups(
     groupID INTEGER AUTO_INCREMENT,
+    group_name VARCHAR(255), 
 	purpose VARCHAR(255),
 	source_location VARCHAR(255), 
 	destination_location VARCHAR(255),
@@ -112,6 +113,11 @@ CREATE TABLE Group_Transportation (
 	FOREIGN KEY(groupID) REFERENCES Groups(groupID)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
+);
+CREATE TABLE Group_User (
+    userId INTEGER,
+    groupID INTEGER,
+    PRIMARY KEY (userId, groupID)
 );
 CREATE TABLE Group_Payment (
 	card_number INTEGER,
