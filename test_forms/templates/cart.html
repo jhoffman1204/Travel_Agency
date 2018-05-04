@@ -47,6 +47,6 @@
     <div>
       Total Cost= {{cost}}
     </div>
-          <a href="/checkout" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> Go To Checkout</a>
+    <a href="{{ url_for('checkout', price = cost) }}" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Add To Cart</a>
 </body>
 </html>

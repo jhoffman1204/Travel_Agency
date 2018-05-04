@@ -37,7 +37,7 @@ class dbm:
         connection.commit()
 
     def create_payment(card_number, card_expiration_date,cvv, payment_type):
-        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + str(card_number) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
+        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + int(card_number) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
         connection.commit()
 
     def create_Accomodation(address , discount, rate_per_night):

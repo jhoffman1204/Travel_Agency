@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = 'somesecretkey'
 
 current_user = ""
 current_user_id = 0
-
+current_total_price = 0
 cart_id = []
 
 # need to be able to return flights, hotels and cruises
@@ -170,31 +170,37 @@ def cart():
     for flight in flights:
     	total_cost+=flight.fare
     for hotel in hotels:
-    	total_cost+=hotel.fare
+    	total_cost+=hotel.rate_per_night
     for cruise in cruises:
-    	total_cost+=cruise.rate_per_night
+    	total_cost+=cruise.fare
     # print(flights)
     # print(hotels)
     # print(cruises)
     return render_template('cart.html', title='Cart',
     flights = flights, hotels = hotels, cruises=cruises, cost=total_cost)
 
-@app.route('/checkout', methods=['GET', 'POST'])
-def checkout():
-
-    return render_template('checkout.html', title='Cart')
+@app.route('/checkout/<price>', methods=['GET', 'POST'])
+def checkout(price):
+    global current_total_price
+    current_total_price = price
+    return render_template('checkout.html', title='Cart', price=price)
 
 @app.route('/checkout_complete', methods=['POST'])
 def checkout_complete():
     card_type = request.form['type']
     card_num = request.form['cardnum']
+    print(card_num)
     card_month = request.form['month']
     card_year = request.form['year']
     card_cvv = request.form['cvv']
+    group = request.form['group']
 
     date = str(card_year) + "-" + str(card_month) + "-00"
 
+    print(current_total_price)
+
     dbm.create_payment(card_num , date, card_cvv, card_type)
+    dbm.create_Group_Payment(card_num, dbm.get_group_id(group), current_total_price)
 
     return render_template('checkout_review.html', title='Cart')
 
