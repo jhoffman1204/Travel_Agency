@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash
-from text_form import SubmissionForm, LoginForm, UserSignupForm, GroupCreationForm
+from text_form import SubmissionForm, LoginForm, UserSignupForm, GroupCreationForm, AddUserForm
 from db_manager import dbm
 from object_file import Flight_Obj, Hotel_Obj
 
@@ -139,22 +139,27 @@ def profile_ids(id):
 def create_group():
 
     groups = dbm.retrieve_group(dbm.get_user_id(current_user))
-
     form = GroupCreationForm()
+    form2 = AddUserForm()
     if form.validate_on_submit():
-        group_name = form.group_name.data
-        purpose = form.purpose.data
-        group_size = form.group_size.data
-        source_location = form.source_location.data
-        destination_location = form.destination_location.data
-        dbm.create_group(group_name, purpose, source_location, destination_location, group_size)
+        if(form2.groupname.data != "" and form2.username.data != ""):
+            group_id = dbm.get_group_id(form2.groupname.data)
+            user_id = dbm.get_user_id(form2.username.data)
+            dbm.add_user_group(user_id,group_id)
+        else:
+            group_name = form.group_name.data
+            purpose = form.purpose.data
+            group_size = form.group_size.data
+            source_location = form.source_location.data
+            destination_location = form.destination_location.data
+            dbm.create_group(group_name, purpose, source_location, destination_location, group_size)
 
-        userID = dbm.get_user_id(current_user)
-        groupID = dbm.get_group_id(group_name)
-        dbm.add_user_group(userID , groupID)
-
-        return homepage()
-    return render_template('create_group.html', title='Create', form=form, groups=groups)
+            userID = dbm.get_user_id(current_user)
+            groupID = dbm.get_group_id(group_name)
+            dbm.add_user_group(userID , groupID)
+            return homepage()
+    
+    return render_template('create_group.html', title='Create', form=form, groups=groups, form2=form2)
 
 
 @app.route('/cart', methods=['GET', 'POST'])

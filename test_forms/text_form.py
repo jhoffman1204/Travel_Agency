@@ -25,3 +25,8 @@ class GroupCreationForm(FlaskForm):
     source_location = StringField('Source Location')
     destination_location = StringField('Destination Location')
     submit = SubmitField('Submit')
+
+class AddUserForm(FlaskForm):
+    groupname = StringField('Group Name')
+    username = StringField('Username')
+    submit2 = SubmitField('Add User')
