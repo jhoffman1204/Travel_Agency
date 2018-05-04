@@ -97,6 +97,11 @@ def flights():
 def flights_specific():
     arrival = request.form['Arrival Date']
     depart =  request.form['Departure Date']
+    src=request.form['From']
+    dest=request.form['To']
+
+
+
     print(arrival)
     print(depart)
 

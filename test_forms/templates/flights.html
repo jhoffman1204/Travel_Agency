@@ -58,6 +58,7 @@ tr:nth-child(even) {
     <a href="cruises" class="w3-bar-item w3-button w3-padding-large">Cruises</a>
     <a href="profile" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Account</a>
     <a href="/cart" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Cart</a>
+    <a href="/create_group" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Create Group</a>
     
   </div>
 </div>
@@ -65,7 +66,22 @@ tr:nth-child(even) {
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">Flights</h1>
-  <p class="w3-xlarge">Select your arrival and departure locations</p>
+ 
+
+  
+<body>
+ 
+  <p class="w3-xlarge">Select your departure and arrival locations</p>
+
+<form action="/flights_specific" method="post" role="form">
+  
+  From:
+  <input type="location" name="From">
+   To:
+  <input type="location" name="To">  
+  <input type="submit">
+  </form>
+
 
   <div class="custom-select" style="width:200px;">
   <select>
@@ -83,31 +99,15 @@ tr:nth-child(even) {
     <option value="3">San Franisco (SFO)</option>
   </select>
 </div>
-  <p class="w3-xlarge">Select your arrival and departure date</p>
-  <!--
-  <head>
-      
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
-</head>
--->
-<body>
- 
+
+  <p class="w3-xlarge">Select your departure and arrival date</p>
+
   <form action="/flights_specific" method="post" role="form">
-  Arrival Date:
-  <input type="date" name="Arrival Date">   
+  
   Departure Date:
   <input type="date" name="Departure Date">
+   Arrival Date:
+  <input type="date" name="Arrival Date">  
   <input type="submit">
   </form>
 
