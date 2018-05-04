@@ -102,17 +102,9 @@ CREATE TABLE Reviews (
 	PRIMARY KEY (userId)
 );		
 CREATE TABLE Group_Transportation (
-	transportation_ID INTEGER AUTO_INCREMENT,
-	mode_of_transport VARCHAR(255),
+	transportation_ID INTEGER,
 	groupID INTEGER,
-	travel_date DATE,
-	PRIMARY KEY (transportation_ID, groupID, mode_of_transport),
-	FOREIGN KEY(transportation_ID) REFERENCES Transportation(transportation_ID)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION,
-	FOREIGN KEY(groupID) REFERENCES Groups(groupID)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION
+	PRIMARY KEY (transportation_ID, groupID)
 );
 CREATE TABLE Group_User (
     userId INTEGER,
@@ -132,17 +124,10 @@ CREATE TABLE Group_Payment (
 		ON DELETE NO ACTION
 );	
 CREATE TABLE Group_Accomodation (
-	address VARCHAR(255),
+	accomodation_id INTEGER,
 	groupID INTEGER,
-	cost INTEGER,
 	reservation_date DATE,
-	PRIMARY KEY (address, groupID, reservation_date), 
-	FOREIGN KEY (groupID) REFERENCES Groups(groupID)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION,
-	FOREIGN KEY (address) REFERENCES Accomodation(address)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION
+	PRIMARY KEY (address, groupID, reservation_date)
 );
 CREATE TABLE Transports_to (
 	transportation_ID INTEGER,

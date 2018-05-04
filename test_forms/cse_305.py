@@ -165,6 +165,9 @@ def create_group():
 @app.route('/cart', methods=['GET', 'POST'])
 def cart():
     items = get_current_cart_items()
+    global flights
+    global hotels
+    global cruises
     flights, hotels, cruises = dbm.retrieve_items(items)
     total_cost=0
     for flight in flights:
@@ -173,9 +176,6 @@ def cart():
     	total_cost+=hotel.rate_per_night
     for cruise in cruises:
     	total_cost+=cruise.fare
-    # print(flights)
-    # print(hotels)
-    # print(cruises)
     return render_template('cart.html', title='Cart',
     flights = flights, hotels = hotels, cruises=cruises, cost=total_cost)
 
@@ -201,6 +201,14 @@ def checkout_complete():
 
     dbm.create_payment(card_num , date, card_cvv, card_type)
     dbm.create_Group_Payment(card_num, dbm.get_group_id(group), current_total_price)
+
+    for flight in flights:
+    	dbm.create_Group_transportation(flight.flight_number, group)
+    for hotel in hotels:
+    	dbm.create_Group_transportation(hotel.accomodation_id, group)
+    for cruise in cruises:
+    	dbm.create_Group_Accomodation(cruise.cruise_number, group)
+
 
     return render_template('checkout_review.html', title='Cart')
 

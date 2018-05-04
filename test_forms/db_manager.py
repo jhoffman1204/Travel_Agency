@@ -37,7 +37,7 @@ class dbm:
         connection.commit()
 
     def create_payment(card_number, card_expiration_date,cvv, payment_type):
-        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + int(card_number) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
+        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + str(int(card_number)) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
         connection.commit()
 
     def create_Accomodation(address , discount, rate_per_night):
@@ -68,16 +68,16 @@ class dbm:
         cursor.execute("INSERT INTO Review(userId, rating, review_target, detailed_review) VALUES ('" + str(userId) + "','"+ str(rating) + "','"+ str(review_target) + "','"+ str(detailed_review) + "')")
         connection.commit()
     
-    def create_Group_transportation(mode_of_transport, groupID, travel_date):
-        cursor.execute("INSERT INTO Group_Transportation(mode_of_transport, groupID, travel_date) VALUES ('" + str(mode_of_transport) + "','"+ str(groupID) + "','"+ str(travel_date) + "')")
+    def create_Group_transportation(transportation_ID, groupID):
+        cursor.execute("INSERT INTO Group_Transportation(transportation_ID, groupID) VALUES ('" + str(int(transportation_ID)) + "','" + str(int(groupID)) + "')")
         connection.commit()
 
     def create_Group_Payment(card_number, groupID, price):
-        cursor.execute("INSERT INTO Group_Payment(card_number, groupID, price) VALUES ('" + str(card_number) + "','"+ str(groupID) + "','"+ str(price) + "')")
+        cursor.execute("INSERT INTO Group_Payment(card_number, groupID, price) VALUES ('" + str(int(card_number)) + "','"+ str(int(groupID)) + "','"+ str(price) + "')")
         connection.commit()
 
-    def create_Group_Accomodation(address, groupID, cost, reservation_date):
-        cursor.execute("INSERT INTO Group_Accomodation(address, groupID, cost, reservation_date) VALUES ('" + str(address) + "','"+ str(groupID) + "','"+ str(cost)+ "','"+ str(reservation_date) + "')")
+    def create_Group_Accomodation(accomodation_id, groupID):
+        cursor.execute("INSERT INTO Group_Accomodation(accomodation_id, groupID) VALUES ('" + str(int(accomodation_id)) + "','" + str(int(groupID)) + "')")
         connection.commit()
 
     def get_range_dates(arrival , depart):
