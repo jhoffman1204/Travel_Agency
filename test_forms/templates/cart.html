@@ -4,6 +4,7 @@
                 var flights = {{ flights }}
                 var cruises = {{ cruises }}
                 var hotels = {{ hotels }}
+                var cost={{cost}}
         </script>
 </head>
 <body>
@@ -42,7 +43,10 @@
               <td>{{i.fare}}</td>
             </tr>
             {% endfor %}
-          </table> 
+    </table> 
+    <div>
+      Total Cost= {{cost}}
+    </div>
           <a href="/checkout" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"> Go To Checkout</a>
 </body>
 </html>
