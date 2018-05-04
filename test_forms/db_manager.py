@@ -23,13 +23,13 @@ class dbm:
     def get_user_id(username):
         cursor.execute("SELECT userId FROM Users WHERE email = '" + username + "';")
         row = cursor.fetchall()
-        print(row[0][0])
+        # print(row[0][0])
         return row[0][0]
     
     def get_group_id(groupname):
         cursor.execute("SELECT groupID FROM Groups WHERE group_name = '" + groupname + "';")
         row = cursor.fetchall()
-        print(row[0][0])
+        # print(row[0][0])
         return row[0][0]
 
     def create_group_passenger(groupID, age, Name, gender):
@@ -166,7 +166,6 @@ class dbm:
     
     def retrieve_group(userID):
         #AND Group_User.userId = '" + userID + "'
-        print(userID)
         cursor.execute("SELECT * FROM Groups, Group_User WHERE Groups.groupID = Group_User.groupID AND Group_User.userId='" + str(userID) +"';")
         row = cursor.fetchall()
         groups = []
