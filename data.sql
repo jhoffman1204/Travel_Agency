@@ -1,9 +1,14 @@
+CREATE TABLE Group_Accomodation (
+	accomodation_id INTEGER,
+	groupID INTEGER,
+	PRIMARY KEY (accomodation_id, groupID)
+);
 CREATE TABLE Transportation (
 	transportation_ID 	INTEGER,
 	transportation_type	VARCHAR(255),
 	PRIMARY KEY (transportation_ID)
 );
-CREATE TABLE Groups(
+CREATE TABLE Groups (
     groupID INTEGER AUTO_INCREMENT,
     group_name VARCHAR(255), 
 	purpose VARCHAR(255),
@@ -123,12 +128,6 @@ CREATE TABLE Group_Payment (
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
 );	
-CREATE TABLE Group_Accomodation (
-	accomodation_id INTEGER,
-	groupID INTEGER,
-	reservation_date DATE,
-	PRIMARY KEY (address, groupID, reservation_date)
-);
 CREATE TABLE Transports_to (
 	transportation_ID INTEGER,
     location_ID INTEGER,

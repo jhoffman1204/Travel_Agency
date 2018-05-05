@@ -203,11 +203,11 @@ def checkout_complete():
     dbm.create_Group_Payment(card_num, dbm.get_group_id(group), current_total_price)
 
     for flight in flights:
-    	dbm.create_Group_transportation(flight.flight_number, group)
+    	dbm.create_Group_transportation(flight.flight_number, dbm.get_group_id(group))
     for hotel in hotels:
-    	dbm.create_Group_transportation(hotel.accomodation_id, group)
+    	dbm.create_Group_transportation(hotel.accomodation_id, dbm.get_group_id(group))
     for cruise in cruises:
-    	dbm.create_Group_Accomodation(cruise.cruise_number, group)
+    	dbm.create_Group_Accomodation(cruise.cruise_number, dbm.get_group_id(group))
 
 
     return render_template('checkout_review.html', title='Cart')

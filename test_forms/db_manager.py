@@ -9,9 +9,6 @@ connection = pymysql.connect(   host = 'cse305group.cqjihdluaq5a.us-east-2.rds.a
 cursor = connection.cursor()
 
 class dbm:
-    def print_test():
-        print("testing")
-
     def create_group(group_name, purpose, src_loc, dest_loc, group_size):
         cursor.execute("INSERT INTO Groups(group_name, purpose, source_location, destination_location, group_size) VALUES ('"+ str(group_name) + "','" + str(purpose) + "','" + str(src_loc) + "','" + str(dest_loc) + "','" + str(group_size) + "')")
         connection.commit()
