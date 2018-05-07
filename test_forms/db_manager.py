@@ -34,7 +34,7 @@ class dbm:
         connection.commit()
 
     def create_payment(card_number, card_expiration_date,cvv, payment_type):
-        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + str(int(card_number)) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
+        cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + str(card_number) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
         connection.commit()
 
     def get_payment(card_number):
@@ -73,15 +73,15 @@ class dbm:
         connection.commit()
     
     def create_Group_transportation(transportation_ID, groupID):
-        cursor.execute("INSERT INTO Group_Transportation(transportation_ID, groupID) VALUES ('" + str(int(transportation_ID)) + "','" + str(int(groupID)) + "')")
+        cursor.execute("INSERT INTO Group_Transportation(transportation_ID, groupID) VALUES ('" + str(transportation_ID) + "','" + str(groupID) + "')")
         connection.commit()
 
     def create_Group_Payment(card_number, groupID, price):
-        cursor.execute("INSERT INTO Group_Payment(card_number, groupID, price) VALUES ('" + str(int(card_number)) + "','"+ str(int(groupID)) + "','"+ str(price) + "')")
+        cursor.execute("INSERT INTO Group_Payment(card_number, groupID, price) VALUES ('" + str(card_number) + "','"+ str(groupID) + "','"+ str(price) + "')")
         connection.commit()
 
     def create_Group_Accomodation(accomodation_id, groupID):
-        cursor.execute("INSERT INTO Group_Accomodation(accomodation_id, groupID) VALUES ('" + str(int(accomodation_id)) + "','" + str(int(groupID)) + "')")
+        cursor.execute("INSERT INTO Group_Accomodation(accomodation_id, groupID) VALUES ('" + str(accomodation_id) + "','" + str(groupID) + "')")
         connection.commit()
 
     def filter_flights(arrival , depart, dest):
