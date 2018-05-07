@@ -97,7 +97,6 @@ def flights():
 def flights_specific():
     arrival = request.form['Arrival Date']
     depart =  request.form['Departure Date']
-    src=request.form['From']
     dest=request.form['To']
 
 
@@ -105,7 +104,7 @@ def flights_specific():
     print(arrival)
     print(depart)
 
-    flights = dbm.get_range_dates(arrival, depart)
+    flights = dbm.filter_flights(arrival, depart, dest)
 
     return render_template('flights.html', title='Flights', flights=flights)
 
@@ -183,7 +182,7 @@ def cart():
 def checkout(price):
     global current_total_price
     current_total_price = price
-    return render_template('checkout.html', title='Cart', price=price)
+    return render_template('checkout.html', title='Cart', price=price, submit_failed=False)
 
 @app.route('/checkout_complete', methods=['POST'])
 def checkout_complete():
@@ -194,6 +193,10 @@ def checkout_complete():
     card_year = request.form['year']
     card_cvv = request.form['cvv']
     group = request.form['group']
+
+    if (card_type == "") or (card_num == "") or (card_month == "") or (card_year == "") or (card_cvv == "") or (group == ""):
+        checkout(0)
+        return render_template('checkout.html', title='Cart', price=current_total_price, submit_failed=True)
 
     date = str(card_year) + "-" + str(card_month) + "-00"
 

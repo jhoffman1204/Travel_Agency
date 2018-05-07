@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+ <script>
+        var submit_failed = {{ submit_failed }}
+    </script>
+
 <head>
     <title>Travel Agency</title>
     <meta charset="UTF-8">
@@ -42,7 +46,9 @@
   </div>
 </div>
     
-
+{% if submit_failed %}
+    <p style="color:red"> Transaction failed. Make sure all fields are filled in correctly. </p>
+{% else %}
 <div class="w3-row-padding w3-padding-64 w3-container">
     <div class="w3-content">
         <div class="w3-twothird">
@@ -113,7 +119,7 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
 

@@ -69,36 +69,6 @@ tr:nth-child(even) {
   
 <body>
  
-  <p class="w3-xlarge">Select your departure and arrival locations</p>
-
-<form action="/flights_specific" method="post" role="form">
-  
-  From:
-  <input type="location" name="From">
-   To:
-  <input type="location" name="To">  
-  <input type="submit">
-  </form>
-
-
-  <div class="custom-select" style="width:200px;">
-  <select>
-    <option value="0">From:</option>
-    <option value="1">New York (JFK)</option>
-    <option value="2">San Diego (SAN)</option>
-    <option value="3">San Franisco (SFO)</option>
-  </select>
-</div>
-  <div class="custom-select" style="width:200px;">
-  <select>
-    <option value="0">To:</option>
-    <option value="1">New York (JFK)</option>
-    <option value="2">San Diego (SAN)</option>
-    <option value="3">San Franisco (SFO)</option>
-  </select>
-</div>
-
-  <p class="w3-xlarge">Select your departure and arrival date</p>
 
   <form action="/flights_specific" method="post" role="form">
   
@@ -106,6 +76,10 @@ tr:nth-child(even) {
   <input type="date" name="Departure Date">
    Arrival Date:
   <input type="date" name="Arrival Date">  
+
+   Destination:
+  <input type="text" name="To"> 
+
   <input type="submit">
   </form>
 
@@ -146,10 +120,7 @@ tr:nth-child(even) {
 </table>
 </body>
 
-
-  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Select</button>
 </header>
-
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">  

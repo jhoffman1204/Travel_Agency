@@ -77,12 +77,12 @@ class dbm:
         cursor.execute("INSERT INTO Group_Accomodation(accomodation_id, groupID) VALUES ('" + str(int(accomodation_id)) + "','" + str(int(groupID)) + "')")
         connection.commit()
 
-    def get_range_dates(arrival , depart):
+    def filter_flights(arrival , depart, dest):
         depart = depart.replace("-", "")
         print("depart" , depart)
         arrival = arrival.replace("-", "")
         print("arrival" , arrival)
-        cursor.execute("SELECT * FROM Flight WHERE depart_date >" + depart + " AND arrival_date < " + arrival +";")
+        cursor.execute("SELECT * FROM Flight WHERE depart_date =" + depart + " AND arrival_date =" + arrival + " AND destination = '" +dest +"';")
         row = cursor.fetchall()
         flights = []
         first_table = row
