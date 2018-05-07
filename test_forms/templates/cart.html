@@ -122,7 +122,7 @@ tr:nth-child(even) {
             {% for i in flights %}
             <tr>
               <td>Flights</td>
-              <td>{{i.carrier}} Flight to {{i.destination}} departing {{i.depart_date}}. Return flight arriving {{i.depart_date}}</td>
+              <td>{{i.carrier}} Flight to {{i.destination}} departing {{i.depart_date}}. Return flight arriving {{i.arrival_date}}</td>
               <td>{{i.fare}}</td>
             </tr>
             {% endfor %}
