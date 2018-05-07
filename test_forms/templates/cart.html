@@ -64,17 +64,48 @@ tr:nth-child(even) {
 <!-- Header -->
   <h1 class="w3-margin w3-jumbo">Cart</h1>
 <head>
-        <script>
-                var flights = {{ flights }}
-                var cruises = {{ cruises }}
-                var hotels = {{ hotels }}
-                var cost={{cost}}
-        </script>
+    <title>Travel Agency</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    </style>
+    
+    <link rel="stylesheet" type = text/css href= "{{ url_for('static',filename='css/profile.css') }}">
+    
+<script>
+    var flights = {{ flights }}
+    var cruises = {{ cruises }}
+    var hotels = {{ hotels }}
+    var cost={{cost}}
+</script>
+    
 </head>
-    <h1>Cart</h1>
+
+    
+
+<body>
+
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+        <div class="w3-twothird">
+           <h1>Cart</h1>
     <table>
+           <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Price</th>   
+          </tr>
             {% for f in cruises %}
             <tr>
+              <td>Cruise</td>
               <td>Cruise {{f.cruise_number}} from {{f.source_location}} to {{f.dest_location}}. Departing {{f.depart_date}} and arriving {{f.arrival_date}}</td>
               <td>{{f.fare}}</td>
             </tr>
@@ -82,6 +113,7 @@ tr:nth-child(even) {
 
             {% for h in hotels %}
             <tr>
+              <td>Hotel</td>
               <td>{{h.name}} at {{h.address}}</td>
               <td>{{h.rate_per_night}}</td>
             </tr>
@@ -89,16 +121,44 @@ tr:nth-child(even) {
 
             {% for i in flights %}
             <tr>
+              <td>Flights</td>
               <td>{{i.carrier}} Flight to {{i.destination}} departing {{i.depart_date}}. Return flight arriving {{i.depart_date}}</td>
               <td>{{i.fare}}</td>
             </tr>
             {% endfor %}
       </table>
-    <div>
-      Total Cost= {{cost}}
+
+                <div>
+                Total Cost= {{cost}}
+                </div>
+                <a href="{{ url_for('checkout', price = cost) }}" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white"><button>Checkout</button></a>
+        </div>
     </div>
-    <a href="{{ url_for('checkout', price = cost) }}" style="float:right" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Checkout</a>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+
+ </div>
+    <p>Created by James Hoffman, Jamie Kunzmann, and Edward Rozario </p>
+
+    <p>&copy; CSE 305</p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+    
 </body>
+
 </head>
 
 
