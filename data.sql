@@ -17,6 +17,23 @@ CREATE TABLE Groups (
 	group_size VARCHAR(255),
 	PRIMARY KEY (groupID)
 );
+CREATE TABLE Users (
+    userId INT AUTO_INCREMENT,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    PRIMARY KEY(userId)
+);
+CREATE TABLE Group_User (
+    userId INTEGER,
+    groupID INTEGER,
+    PRIMARY KEY (userId, groupID),
+    FOREIGN KEY (userId) REFERENCES Users(userId)
+		ON UPDATE CASCADE 
+		ON DELETE NO ACTION,
+    FOREIGN KEY (groupID) REFERENCES Groups(groupID)
+		ON UPDATE CASCADE 
+		ON DELETE NO ACTION
+);
 CREATE TABLE Group_Passengers (
 	Id INTEGER AUTO_INCREMENT,
 	groupID INTEGER,
@@ -111,17 +128,18 @@ CREATE TABLE Group_Transportation (
 	groupID INTEGER,
 	PRIMARY KEY (transportation_ID, groupID)
 );
-CREATE TABLE Group_User (
-    userId INTEGER,
-    groupID INTEGER,
-    PRIMARY KEY (userId, groupID)
-);
 CREATE TABLE Group_Payment (
     confirmation_num INTEGER AUTO_INCREMENT,
-	card_number INTEGER,
+	card_number VARCHAR(255),
 	groupID INTEGER,
 	price INTEGER,
-	PRIMARY KEY (confirmation_num)
+	PRIMARY KEY (confirmation_num),
+    FOREIGN KEY (card_number) REFERENCES Payment(card_number)
+        ON UPDATE CASCADE 
+        ON DELETE NO ACTION,
+    FOREIGN KEY (groupID) REFERENCES Groups(groupID)
+        ON UPDATE CASCADE 
+        ON DELETE NO ACTION
 );	
 CREATE TABLE Transports_to (
 	transportation_ID INTEGER,
@@ -158,10 +176,4 @@ CREATE TABLE Accomodation_Reviews (
 	FOREIGN KEY(address) REFERENCES Accomodation(address)
 		ON UPDATE CASCADE 
 		ON DELETE NO ACTION
-);
-CREATE TABLE Users (
-    userId INT AUTO_INCREMENT,
-    email VARCHAR(255),
-    password VARCHAR(255),
-    PRIMARY KEY(userId)
 );
