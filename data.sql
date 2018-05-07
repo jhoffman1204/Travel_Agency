@@ -29,7 +29,7 @@ CREATE TABLE Group_Passengers (
 		ON DELETE NO ACTION
 );
 CREATE TABLE Payment (
-	card_number INTEGER,
+	card_number VARCHAR(255),
 	card_expiration_date DATE,
 	cvv INTEGER, 
 	payment_type VARCHAR(255),
@@ -117,16 +117,11 @@ CREATE TABLE Group_User (
     PRIMARY KEY (userId, groupID)
 );
 CREATE TABLE Group_Payment (
+    confirmation_num INTEGER AUTO_INCREMENT,
 	card_number INTEGER,
 	groupID INTEGER,
 	price INTEGER,
-	PRIMARY KEY (card_number, groupID),
-	FOREIGN KEY(card_number) REFERENCES Payment(card_number)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION,
-	FOREIGN KEY(groupID) REFERENCES Groups(groupID)
-		ON UPDATE CASCADE 
-		ON DELETE NO ACTION
+	PRIMARY KEY (confirmation_num)
 );	
 CREATE TABLE Transports_to (
 	transportation_ID INTEGER,
