@@ -18,7 +18,7 @@ class dbm:
         connection.commit()
 
     def get_user_id(username):
-        cursor.execute("SELECT userId FROM Users WHERE email = '" + username + "';")
+        cursor.execute("SELECT userId FROM Users WHERE username = '" + username + "';")
         row = cursor.fetchall()
         # print(row[0][0])
         return row[0][0]
@@ -109,19 +109,19 @@ class dbm:
             row = cursor.fetchone()
             first_table = row
 
-    def add_new_user(email, password):
+    def add_new_user(username, password):
         # Checks to make sure username is valid
-        x = cursor.execute("SELECT email FROM Users WHERE email = '" + email + "';") 
+        x = cursor.execute("SELECT username FROM Users WHERE username = '" + username + "';") 
         if len(cursor.fetchall()) > 0:
             return False
         else:
-            cursor.execute("INSERT INTO Users(email,password) VALUES ('" + email + "','" + password + "')")
+            cursor.execute("INSERT INTO Users(username,password) VALUES ('" + username + "','" + password + "')")
             connection.commit()
             dbm.print_all_users()
             return True
 
-    def does_user_exist(email, password):
-        x = cursor.execute("SELECT email, password FROM Users WHERE email = '" + email + "';") 
+    def does_user_exist(username, password):
+        x = cursor.execute("SELECT username, password FROM Users WHERE username = '" + username + "';") 
         profiles = cursor.fetchone()
         if profiles is not None:
             if password == profiles[1]:
@@ -130,15 +130,15 @@ class dbm:
         else:
             return 0
         
-    def get_user_password(email, password):
-        x = cursor.execute("SELECT password FROM Users WHERE email = '" + email + "';")
+    def get_user_password(username, password):
+        x = cursor.execute("SELECT password FROM Users WHERE username = '" + username + "';")
         profile = cursor.fetchone()
         if password == profile[0]:
             return 1
         return 0
     
     def set_user_password(username, newPassword):
-        cursor.execute("UPDATE Users SET password = '" + newPassword + "' WHERE email = '" + username + "';")
+        cursor.execute("UPDATE Users SET password = '" + newPassword + "' WHERE username = '" + username + "';")
         connection.commit()
         dbm.print_all_users()
 
