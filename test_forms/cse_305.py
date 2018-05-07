@@ -199,7 +199,9 @@ def checkout_complete():
 
     print(current_total_price)
 
-    dbm.create_payment(card_num , date, card_cvv, card_type)
+    if(dbm.get_payment(card_num) == False):
+        dbm.create_payment(card_num , date, card_cvv, card_type)
+
     dbm.create_Group_Payment(card_num, dbm.get_group_id(group), current_total_price)
 
     for flight in flights:
@@ -209,6 +211,8 @@ def checkout_complete():
     for cruise in cruises:
     	dbm.create_Group_Accomodation(cruise.cruise_number, dbm.get_group_id(group))
 
+
+    del cart_id[:]
 
     return render_template('checkout_review.html', title='Cart')
 

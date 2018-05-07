@@ -37,6 +37,13 @@ class dbm:
         cursor.execute("INSERT INTO Payment(card_number, card_expiration_date, cvv, payment_type) VALUES ('" + str(int(card_number)) + "','" + str(card_expiration_date)+ "','" + str(cvv) + "','" + str(payment_type) + "')")
         connection.commit()
 
+    def get_payment(card_number):
+        total = cursor.execute("SELECT * from Payment WHERE card_number = '" + card_number +  "';")
+        if(total == 1):
+            return True
+        else:
+            return False
+
     def create_Accomodation(address , discount, rate_per_night):
         cursor.execute("INSERT INTO Accomodation(address, discount, rate_per_night) VALUES ('" + str(address) + "','" + str(discount)+ "','" + str(rate_per_night) + "')")
         connection.commit()
@@ -82,7 +89,7 @@ class dbm:
         print("depart" , depart)
         arrival = arrival.replace("-", "")
         print("arrival" , arrival)
-        cursor.execute("SELECT * FROM Flight WHERE depart_date >" + depart + " AND arrival_date < " + arrival +";")
+        cursor.execute("SELECT * FROM Flight WHERE depart_date =" + depart + " AND arrival_date =" + arrival +";")
         row = cursor.fetchall()
         flights = []
         first_table = row
